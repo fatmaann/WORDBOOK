@@ -9,15 +9,29 @@
         android:id="@+id/editText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/inter_medium"
         android:hint="Введите название темы"
         android:inputType="text" />
+
+    <Button
+        android:id="@+id/colorButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="#2999E5"
+        android:fontFamily="@font/inter_medium"
+        android:text="Выбрать цвет"
+        android:textStyle="bold" />
 
     <Button
         android:id="@+id/saveButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Сохранить"
-        android:backgroundTint="#2999E5"
+        android:layout_gravity="center"
         android:layout_marginTop="16dp"
-        android:layout_gravity="center" />
+        android:backgroundTint="#2999E5"
+        android:fontFamily="@font/inter_medium"
+        android:text="Сохранить"
+        android:textStyle="bold" />
 </LinearLayout>

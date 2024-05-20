@@ -1,6 +1,7 @@
 package com.example.wordbook
 
 import android.annotation.SuppressLint
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,12 +10,18 @@ import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.fragment.app.viewModels
+
 
 class MainMenuFragment : Fragment(), AddTopicFragment.OnTopicSavedListener {
 
     private lateinit var recyclerView: RecyclerView
+    private val viewModel by viewModels<TopicViewModel>()
     private lateinit var adapter: TopicAdapter
-    private var topics: MutableList<String> = mutableListOf("Ошибки", "Выученные")
+//    private var topics: MutableList<Pair<String, Int>> = mutableListOf(
+//        "Ошибки" to Color.WHITE,
+//        "Выученные" to Color.WHITE
+//    )
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -24,7 +31,7 @@ class MainMenuFragment : Fragment(), AddTopicFragment.OnTopicSavedListener {
         val view = inflater.inflate(R.layout.fragment_main_menu, container, false)
 
         recyclerView = view.findViewById(R.id.recycler_view)
-        adapter = TopicAdapter(topics)
+        adapter = TopicAdapter(viewModel.topics)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         recyclerView.adapter = adapter
 
@@ -42,8 +49,8 @@ class MainMenuFragment : Fragment(), AddTopicFragment.OnTopicSavedListener {
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    override fun onTopicSaved(topic: String) {
-        topics.add(topic)
+    override fun onTopicSaved(topic: String, color: Int) {
+        viewModel.topics.add(topic to color)
         adapter.notifyDataSetChanged()
     }
 }
