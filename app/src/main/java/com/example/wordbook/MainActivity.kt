@@ -20,11 +20,11 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 R.id.menu_item_add -> {
-//                    replaceFragment(OtherFragment())
+                    replaceFragment(AddWordFragment())
                     true
                 }
                 R.id.menu_item_test -> {
-//                    replaceFragment(OtherFragment())
+                    replaceFragment(WordListFragment())
                     true
                 }
                 else -> false

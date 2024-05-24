@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <EditText
+        android:id="@+id/word_native"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Слово на родном языке" />
+
+    <EditText
+        android:id="@+id/word_translation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Перевод" />
+
+    <EditText
+        android:id="@+id/example_native"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Пример на родном языке" />
+
+    <EditText
+        android:id="@+id/example_translation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Перевод примера" />
+
+    <Spinner
+        android:id="@+id/topic_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Выберите тему" />
+
+    <Button
+        android:id="@+id/save_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Сохранить" />
+</LinearLayout>

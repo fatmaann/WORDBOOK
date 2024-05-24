@@ -1,39 +1,46 @@
 package com.example.wordbook
 
 import android.annotation.SuppressLint
-import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.fragment.app.viewModels
-
+import kotlinx.coroutines.launch
 
 class MainMenuFragment : Fragment(), AddTopicFragment.OnTopicSavedListener {
 
     private lateinit var recyclerView: RecyclerView
-    private val viewModel by viewModels<TopicViewModel>()
+    private lateinit var roomHelper: RoomHelper
     private lateinit var adapter: TopicAdapter
-//    private var topics: MutableList<Pair<String, Int>> = mutableListOf(
-//        "Ошибки" to Color.WHITE,
-//        "Выученные" to Color.WHITE
-//    )
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
+        inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        roomHelper = RoomHelper(requireContext())
         val view = inflater.inflate(R.layout.fragment_main_menu, container, false)
 
+        return view
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
         recyclerView = view.findViewById(R.id.recycler_view)
-        adapter = TopicAdapter(viewModel.topics)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        recyclerView.adapter = adapter
+        lifecycleScope.launch {
+            val topics = roomHelper.topicDao.getAllTopics()
+            adapter = TopicAdapter(topics) { topicId ->
+                openWordListFragment(topicId)
+            }
+            recyclerView.adapter = adapter
+        }
 
         val addButton: Button = view.findViewById(R.id.add_button)
         addButton.setOnClickListener {
@@ -44,13 +51,26 @@ class MainMenuFragment : Fragment(), AddTopicFragment.OnTopicSavedListener {
                 .addToBackStack(null)
                 .commit()
         }
+    }
 
-        return view
+    private fun openWordListFragment(topicId: Int) {
+        val fragment = WordListFragment().apply {
+            arguments = Bundle().apply {
+                putInt("TOPIC_NAME", topicId)
+            }
+        }
+        parentFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container, fragment)
+            .addToBackStack(null)
+            .commit()
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    override fun onTopicSaved(topic: String, color: Int) {
-        viewModel.topics.add(topic to color)
-        adapter.notifyDataSetChanged()
+    override fun onTopicSaved(topic: Topic) {
+        lifecycleScope.launch {
+            roomHelper.topicDao.insert(topic)
+            val topics = roomHelper.topicDao.getAllTopics()
+            adapter.updateTopics(topics)
+        }
     }
 }

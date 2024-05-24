@@ -18,7 +18,7 @@ class AddTopicFragment : Fragment() {
     private var selectedColor: Int = Color.WHITE
 
     interface OnTopicSavedListener {
-        fun onTopicSaved(topic: String, color: Int)
+        fun onTopicSaved(topic: Topic)
     }
 
     fun setListener(listener: OnTopicSavedListener) {
@@ -48,7 +48,8 @@ class AddTopicFragment : Fragment() {
 
         saveButton.setOnClickListener {
             val topic = editText.text.toString()
-            listener?.onTopicSaved(topic, selectedColor)
+            val topicId = 3
+            listener?.onTopicSaved(Topic(topicId, topic, selectedColor))
             requireActivity().supportFragmentManager.popBackStack()
         }
 
