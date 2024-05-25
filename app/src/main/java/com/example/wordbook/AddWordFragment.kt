@@ -67,7 +67,7 @@ class AddWordFragment : Fragment() {
             lifecycleScope.launch {
                 roomHelper.wordDao.insert(word)
                 clearFields()
-                requireActivity().supportFragmentManager.popBackStack()
+//                requireActivity().supportFragmentManager.popBackStack()
             }
         }
 
