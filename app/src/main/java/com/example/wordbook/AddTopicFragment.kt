@@ -13,7 +13,7 @@ import com.example.wordbook.ColorPickerDialog
 import com.example.wordbook.R
 import com.example.wordbook.Topic
 
-class AddTopicFragment : Fragment() {
+class AddTopicFragment : Fragment()ccccccc {
 
     private lateinit var editText: EditText
     private lateinit var saveButton: Button
