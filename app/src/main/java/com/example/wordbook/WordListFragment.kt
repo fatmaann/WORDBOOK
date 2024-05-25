@@ -35,18 +35,20 @@ class WordListFragment : Fragment() {
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         recyclerView.adapter = adapter
 
-        val topicId = arguments?.getInt("TOPIC_NAME") ?: -1
+        val topicId = arguments?.getInt("TOPIC_ID") ?: -1
         if (topicId != -1) {
             lifecycleScope.launch {
                 val topic = roomHelper.topicDao.getTopicNameById(topicId)
                 val topicName = topic?.name ?: "Название темы"
                 view.findViewById<TextView>(R.id.topicTitle).text = topicName
 
-                val wordCount = roomHelper.wordDao.getWordCountForTopic(topicId)
-                println(wordCount)
-                if (wordCount > 0) {
-                    val words = roomHelper.wordDao.getWordsForTopic(topicId)
-                    println(words)
+                val words = when (topicId) {
+                    1 -> roomHelper.wordDao.getMistakenWords()
+                    2 -> roomHelper.wordDao.getLearnedWords()
+                    else -> roomHelper.wordDao.getWordsForTopic(topicId)
+                }
+
+                if (words.isNotEmpty()) {
                     adapter.updateWords(words)
                     recyclerView.visibility = View.VISIBLE
                 } else {

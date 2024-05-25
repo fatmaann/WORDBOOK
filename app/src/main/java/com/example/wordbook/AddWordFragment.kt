@@ -36,7 +36,8 @@ class AddWordFragment : Fragment() {
 
         lifecycleScope.launch {
             val topics = roomHelper.topicDao.getAllTopics()
-            val topicPairs = topics.map { it.name to it.id }
+            val filteredTopics = topics.filter { it.name != "Ошибки"}
+            val topicPairs = filteredTopics.map { it.name to it.id }
             val adapter = object : ArrayAdapter<Pair<String, Int>>(requireContext(), android.R.layout.simple_spinner_item, topicPairs) {
                 override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
                     val view = super.getView(position, convertView, parent)
@@ -74,9 +75,13 @@ class AddWordFragment : Fragment() {
                     topicId = selectedTopicPair.second,
                     status = 0
                 )
+                if (selectedTopicPair.first == "Выученные" && selectedTopicPair.second == 2) {
+                    word.isLearned = true
+                }
                 lifecycleScope.launch {
                     roomHelper.wordDao.insert(word)
                     clearFields()
+                    openWordListFragment(selectedTopicPair.second)
                 }
             }
         }
@@ -89,5 +94,18 @@ class AddWordFragment : Fragment() {
         wordTranslation.text.clear()
         exampleNative.text.clear()
         exampleTranslation.text.clear()
+    }
+
+    private fun openWordListFragment(topicId: Int) {
+        val fragment = WordListFragment().apply {
+            arguments = Bundle().apply {
+                putInt("TOPIC_ID", topicId)
+            }
+        }
+        requireActivity().supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.fragment_container, fragment)
+            .addToBackStack(null)
+            .commit()
     }
 }

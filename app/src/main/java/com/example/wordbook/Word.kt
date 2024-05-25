@@ -12,5 +12,7 @@ data class Word(
     @ColumnInfo(name = "exampleNative") val exampleNative: String,
     @ColumnInfo(name = "exampleTranslation") val exampleTranslation: String,
     @ColumnInfo(name = "topicId") val topicId: Int,
-    @ColumnInfo(name = "status") val status: Int
+    @ColumnInfo(name = "status") val status: Int,
+    @ColumnInfo(name = "isLearned") var isLearned: Boolean = false,
+    @ColumnInfo(name = "isMistaken") val isMistaken: Boolean = false
 )

@@ -34,6 +34,7 @@ class RoomHelper(context: Context) {
 //                Log.i("insert", "I am here 1 ")
                 topicDao.insert(Topic(name = "Выученные", color = Color.WHITE))
 //                Log.i("insert", "I am here 2")
+                topicDao.insert(Topic(name = "Новая тема", color = Color.WHITE))
             }
         }
     }

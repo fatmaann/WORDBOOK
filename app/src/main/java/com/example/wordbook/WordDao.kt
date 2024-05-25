@@ -15,5 +15,11 @@ interface WordDao {
 
     @Query("SELECT COUNT(*) FROM words WHERE topicId = :topicId")
     suspend fun getWordCountForTopic(topicId: Int): Int
+
+    @Query("SELECT * FROM words WHERE isLearned = 1")
+    suspend fun getLearnedWords(): MutableList<Word>
+
+    @Query("SELECT * FROM words WHERE isMistaken = 1")
+    suspend fun getMistakenWords(): MutableList<Word>
 }
 

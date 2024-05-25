@@ -56,7 +56,7 @@ class MainMenuFragment : Fragment(), AddTopicFragment.OnTopicSavedListener {
     private fun openWordListFragment(topicId: Int) {
         val fragment = WordListFragment().apply {
             arguments = Bundle().apply {
-                putInt("TOPIC_NAME", topicId)
+                putInt("TOPIC_ID", topicId)
             }
         }
         parentFragmentManager.beginTransaction()
