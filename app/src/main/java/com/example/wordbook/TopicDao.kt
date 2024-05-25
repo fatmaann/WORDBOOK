@@ -12,4 +12,7 @@ interface TopicDao {
 
     @Query("SELECT * FROM topics")
     suspend fun getAllTopics(): MutableList<Topic>
+
+    @Query("SELECT * FROM topics WHERE id = :topicId")
+    suspend fun getTopicNameById(topicId: Int): Topic?
 }

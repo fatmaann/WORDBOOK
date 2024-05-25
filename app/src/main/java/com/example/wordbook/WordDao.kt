@@ -11,5 +11,9 @@ interface WordDao {
     suspend fun insert(word: Word)
 
     @Query("SELECT * FROM words WHERE topicId = :topicId")
-    fun getWordsForTopic(topicId: Int): MutableList<Word>
+    suspend fun getWordsForTopic(topicId: Int): MutableList<Word>
+
+    @Query("SELECT COUNT(*) FROM words WHERE topicId = :topicId")
+    suspend fun getWordCountForTopic(topicId: Int): Int
 }
+

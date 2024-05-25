@@ -1,13 +1,13 @@
 package com.example.wordbook
 
-import TopicViewModel
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.launch
 
 class AddWordFragment : Fragment() {
 
@@ -17,7 +17,7 @@ class AddWordFragment : Fragment() {
     private lateinit var exampleTranslation: EditText
     private lateinit var topicSpinner: Spinner
     private lateinit var saveButton: Button
-    private val viewModel: TopicViewModel by viewModels()
+    private lateinit var roomHelper: RoomHelper
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,23 +32,27 @@ class AddWordFragment : Fragment() {
         topicSpinner = view.findViewById(R.id.topic_spinner)
         saveButton = view.findViewById(R.id.save_button)
 
-        val topics: List<Topic> = viewModel.topics
-        val topicPairs = topics.map { it.name to it.id }
-        val adapter = object : ArrayAdapter<Pair<String, Int>>(requireContext(), android.R.layout.simple_spinner_item, topicPairs) {
-            override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
-                val view = super.getView(position, convertView, parent)
-                (view as TextView).text = getItem(position)?.first
-                return view
-            }
+        roomHelper = RoomHelper(requireContext())
 
-            override fun getDropDownView(position: Int, convertView: View?, parent: ViewGroup): View {
-                val view = super.getDropDownView(position, convertView, parent)
-                (view as TextView).text = getItem(position)?.first
-                return view
+        lifecycleScope.launch {
+            val topics = roomHelper.topicDao.getAllTopics()
+            val topicPairs = topics.map { it.name to it.id }
+            val adapter = object : ArrayAdapter<Pair<String, Int>>(requireContext(), android.R.layout.simple_spinner_item, topicPairs) {
+                override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
+                    val view = super.getView(position, convertView, parent)
+                    (view as TextView).text = getItem(position)?.first
+                    return view
+                }
+
+                override fun getDropDownView(position: Int, convertView: View?, parent: ViewGroup): View {
+                    val view = super.getDropDownView(position, convertView, parent)
+                    (view as TextView).text = getItem(position)?.first
+                    return view
+                }
             }
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            topicSpinner.adapter = adapter
         }
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        topicSpinner.adapter = adapter
 
         saveButton.setOnClickListener {
             val selectedTopicPair = topicSpinner.selectedItem as Pair<String, Int>
@@ -60,9 +64,20 @@ class AddWordFragment : Fragment() {
                 topicId = selectedTopicPair.second,
                 status = 0
             )
-            viewModel.addWord(word)
+            lifecycleScope.launch {
+                roomHelper.wordDao.insert(word)
+                clearFields()
+                requireActivity().supportFragmentManager.popBackStack()
+            }
         }
 
         return view
+    }
+
+    private fun clearFields() {
+        wordNative.text.clear()
+        wordTranslation.text.clear()
+        exampleNative.text.clear()
+        exampleTranslation.text.clear()
     }
 }
