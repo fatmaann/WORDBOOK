@@ -56,18 +56,28 @@ class AddWordFragment : Fragment() {
 
         saveButton.setOnClickListener {
             val selectedTopicPair = topicSpinner.selectedItem as Pair<String, Int>
-            val word = Word(
-                nativeWord = wordNative.text.toString(),
-                translation = wordTranslation.text.toString(),
-                exampleNative = exampleNative.text.toString(),
-                exampleTranslation = exampleTranslation.text.toString(),
-                topicId = selectedTopicPair.second,
-                status = 0
-            )
-            lifecycleScope.launch {
-                roomHelper.wordDao.insert(word)
-                clearFields()
-//                requireActivity().supportFragmentManager.popBackStack()
+            val nativeWord = wordNative.text.toString()
+            val translation = wordTranslation.text.toString()
+            val exampleNative = exampleNative.text.toString()
+            val exampleTranslation = exampleTranslation.text.toString()
+
+            if (nativeWord.length > 40 || translation.length > 40 || exampleNative.length > 40 || exampleTranslation.length > 40) {
+                Toast.makeText(requireContext(), "Ни одно из полей не должно превышать 40 символов", Toast.LENGTH_SHORT).show()
+            } else if (nativeWord.isEmpty() || translation.isEmpty()) {
+                Toast.makeText(requireContext(), "Слова на иностранном и родном языках не могут быть пустыми", Toast.LENGTH_SHORT).show()
+            } else {
+                val word = Word(
+                    nativeWord = nativeWord,
+                    translation = translation,
+                    exampleNative = exampleNative,
+                    exampleTranslation = exampleTranslation,
+                    topicId = selectedTopicPair.second,
+                    status = 0
+                )
+                lifecycleScope.launch {
+                    roomHelper.wordDao.insert(word)
+                    clearFields()
+                }
             }
         }
 

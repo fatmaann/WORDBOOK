@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.wordbook.ColorPickerDialog
 import com.example.wordbook.R
@@ -51,9 +52,15 @@ class AddTopicFragment : Fragment() {
 
         saveButton.setOnClickListener {
             val topicName = editText.text.toString()
-            val topic = Topic(name = topicName, color = selectedColor)
-            listener?.onTopicSaved(topic)
-            requireActivity().supportFragmentManager.popBackStack()
+            if (topicName.length > 30) {
+                Toast.makeText(requireContext(), "Название темы не может превышать 30 символов", Toast.LENGTH_SHORT).show()
+            } else if (topicName.isEmpty()) {
+                Toast.makeText(requireContext(), "Название темы не может быть пустым", Toast.LENGTH_SHORT).show()
+            } else {
+                val topic = Topic(name = topicName, color = selectedColor)
+                listener?.onTopicSaved(topic)
+                requireActivity().supportFragmentManager.popBackStack()
+            }
         }
 
         return view
