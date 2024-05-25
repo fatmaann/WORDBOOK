@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -24,9 +23,7 @@ class MainMenuFragment : Fragment(), AddTopicFragment.OnTopicSavedListener {
         savedInstanceState: Bundle?
     ): View? {
         roomHelper = RoomHelper(requireContext())
-        val view = inflater.inflate(R.layout.fragment_main_menu, container, false)
-
-        return view
+        return inflater.inflate(R.layout.fragment_main_menu, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -34,8 +31,10 @@ class MainMenuFragment : Fragment(), AddTopicFragment.OnTopicSavedListener {
 
         recyclerView = view.findViewById(R.id.recycler_view)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
+
         lifecycleScope.launch {
-            val topics = roomHelper.topicDao.getAllTopics()
+            val topics = roomHelper.topicDao.getAllTopics().toMutableList()
+            println(topics)
             adapter = TopicAdapter(topics) { topicId ->
                 openWordListFragment(topicId)
             }
@@ -70,7 +69,7 @@ class MainMenuFragment : Fragment(), AddTopicFragment.OnTopicSavedListener {
         lifecycleScope.launch {
             roomHelper.topicDao.insert(topic)
             val topics = roomHelper.topicDao.getAllTopics()
-            adapter.updateTopics(topics)
+            adapter.updateTopics(topics.toMutableList())
         }
     }
 }

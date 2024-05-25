@@ -47,9 +47,9 @@ class AddTopicFragment : Fragment() {
         }
 
         saveButton.setOnClickListener {
-            val topic = editText.text.toString()
-            val topicId = 3
-            listener?.onTopicSaved(Topic(topicId, topic, selectedColor))
+            val topicName = editText.text.toString()
+            val topic = Topic(name = topicName, color = selectedColor)
+            listener?.onTopicSaved(topic)
             requireActivity().supportFragmentManager.popBackStack()
         }
 

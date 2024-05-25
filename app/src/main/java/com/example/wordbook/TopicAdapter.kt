@@ -29,7 +29,8 @@ class TopicAdapter(
         return topics.size
     }
 
-    fun updateTopics(newTopics: List<Topic>) {
+    @SuppressLint("NotifyDataSetChanged")
+    fun updateTopics(newTopics: MutableList<Topic>) {
         topics.clear()
         topics.addAll(newTopics)
         notifyDataSetChanged()
