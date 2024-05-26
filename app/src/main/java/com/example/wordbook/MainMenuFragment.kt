@@ -10,7 +10,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.wordbook.AddTopicFragment
 import kotlinx.coroutines.launch
 
 class MainMenuFragment : Fragment(), AddTopicFragment.OnTopicSavedListener {
@@ -33,14 +32,7 @@ class MainMenuFragment : Fragment(), AddTopicFragment.OnTopicSavedListener {
         recyclerView = view.findViewById(R.id.recycler_view)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
-        lifecycleScope.launch {
-            val topics = roomHelper.topicDao.getAllTopics().toMutableList()
-            println(topics)
-            adapter = TopicAdapter(topics) { topicId ->
-                openWordListFragment(topicId)
-            }
-            recyclerView.adapter = adapter
-        }
+        loadTopics()
 
         val addButton: Button = view.findViewById(R.id.add_button)
         addButton.setOnClickListener {
@@ -50,6 +42,16 @@ class MainMenuFragment : Fragment(), AddTopicFragment.OnTopicSavedListener {
                 .replace(R.id.fragment_container, addTopicFragment)
                 .addToBackStack(null)
                 .commit()
+        }
+    }
+
+    private fun loadTopics() {
+        lifecycleScope.launch {
+            val topics = roomHelper.topicDao.getAllTopics().toMutableList()
+            adapter = TopicAdapter(topics) { topicId ->
+                openWordListFragment(topicId)
+            }
+            recyclerView.adapter = adapter
         }
     }
 
@@ -69,8 +71,7 @@ class MainMenuFragment : Fragment(), AddTopicFragment.OnTopicSavedListener {
     override fun onTopicSaved(topic: Topic) {
         lifecycleScope.launch {
             roomHelper.topicDao.insert(topic)
-            val topics = roomHelper.topicDao.getAllTopics()
-            adapter.updateTopics(topics.toMutableList())
+            loadTopics()
         }
     }
 }
