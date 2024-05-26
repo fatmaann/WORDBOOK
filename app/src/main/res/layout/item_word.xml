@@ -5,7 +5,8 @@
     android:layout_margin="8dp"
     android:orientation="vertical"
     android:padding="16dp"
-    android:background="@drawable/rounded_corner">
+    android:background="@drawable/rounded_corner"
+    android:elevation="5dp">
 
     <TextView
         android:id="@+id/native_text"

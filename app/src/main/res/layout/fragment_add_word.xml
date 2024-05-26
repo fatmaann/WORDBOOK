@@ -2,14 +2,20 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp">
+    android:orientation="vertical">
+
+
+    <TextView
+        android:id="@+id/title_text"
+        style="@style/TitleTextViewStyle"
+        android:text="Новое слово" />
 
     <EditText
         android:id="@+id/word_native"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Слово на родном языке" />
+        android:hint="Слово на родном языке"
+        android:background="#2999E5" />
 
     <EditText
         android:id="@+id/word_translation"
