@@ -1,6 +1,7 @@
 package com.example.wordbook
 
 import androidx.room.*
+import com.example.wordbook.Topic
 
 @Dao
 interface TopicDao {

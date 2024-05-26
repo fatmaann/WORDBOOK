@@ -1,9 +1,11 @@
 package com.example.wordbook
 
-import android.content.Context
 import androidx.room.Database
-import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.example.wordbook.Topic
+import com.example.wordbook.TopicDao
+import com.example.wordbook.Word
+import com.example.wordbook.WordDao
 
 
 @Database(entities = [Topic::class, Word::class], version = 1, exportSchema = false)

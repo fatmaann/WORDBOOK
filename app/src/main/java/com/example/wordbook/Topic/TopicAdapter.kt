@@ -10,6 +10,8 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.example.wordbook.R
+import com.example.wordbook.Topic
 
 class TopicAdapter(
     private val topics: MutableList<Topic>,

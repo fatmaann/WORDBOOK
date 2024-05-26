@@ -92,19 +92,24 @@ class EditWordFragment : Fragment() {
             val translation = editTranslation.text.toString()
             val exampleNative = editExampleNative.text.toString()
             val exampleTranslation = editExampleTranslation.text.toString()
-            val selectedTopicPair = selectTopicSpinner.selectedItem as Pair<String, Int>
-            val topicId = selectedTopicPair.second
-            val status = wordStatus
-            val isLearned = learnedCheckBox.isChecked
-            val isMistaken = wordIsMistaken
 
-            if (nativeWord.isNotBlank() && translation.isNotBlank()) {
-                lifecycleScope.launch {
-                    roomHelper.wordDao.updateWordById(wordId, nativeWord, translation, exampleNative, exampleTranslation, topicId, status, isLearned, isMistaken)
-                    parentFragmentManager.popBackStack()
-                }
+            if (selectTopicSpinner.adapter == null || selectTopicSpinner.adapter.isEmpty) {
+                Toast.makeText(requireContext(), "Пожалуйста, создайте новую тему", Toast.LENGTH_SHORT).show()
             } else {
-                Toast.makeText(requireContext(), "Пожалуйста, заполните обязательные поля", Toast.LENGTH_SHORT).show()
+                val selectedTopicPair = selectTopicSpinner.selectedItem as Pair<String, Int>
+                val topicId = selectedTopicPair.second
+                val status = wordStatus
+                val isLearned = learnedCheckBox.isChecked
+                val isMistaken = wordIsMistaken
+
+                if (nativeWord.isNotBlank() && translation.isNotBlank()) {
+                    lifecycleScope.launch {
+                        roomHelper.wordDao.updateWordById(wordId, nativeWord, translation, exampleNative, exampleTranslation, topicId, status, isLearned, isMistaken)
+                        parentFragmentManager.popBackStack()
+                    }
+                } else {
+                    Toast.makeText(requireContext(), "Пожалуйста, заполните обязательные поля", Toast.LENGTH_SHORT).show()
+                }
             }
         }
 

@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.wordbook.R
+import com.example.wordbook.Word
 
 class WordAdapter(private var words: List<Word>, private val onItemClick: (Word) -> Unit) : RecyclerView.Adapter<WordAdapter.WordViewHolder>() {
 

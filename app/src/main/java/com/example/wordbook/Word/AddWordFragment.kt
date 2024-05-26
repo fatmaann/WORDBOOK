@@ -58,30 +58,34 @@ class AddWordFragment : Fragment() {
         }
 
         saveButton.setOnClickListener {
-            val selectedTopicPair = topicSpinner.selectedItem as Pair<String, Int>
-            val nativeWord = wordNative.text.toString()
-            val translation = wordTranslation.text.toString()
-            val exampleNative = exampleNative.text.toString()
-            val exampleTranslation = exampleTranslation.text.toString()
-            val isLearned = learnedCheckBox.isChecked
-
-            if (nativeWord.length > 40 || translation.length > 40 || exampleNative.length > 40 || exampleTranslation.length > 40) {
-                Toast.makeText(requireContext(), "Ни одно из полей не должно превышать 40 символов", Toast.LENGTH_SHORT).show()
-            } else if (nativeWord.isEmpty() || translation.isEmpty()) {
-                Toast.makeText(requireContext(), "Слова на иностранном и родном языках не могут быть пустыми", Toast.LENGTH_SHORT).show()
+            if (topicSpinner.adapter == null || topicSpinner.adapter.isEmpty) {
+                Toast.makeText(requireContext(), "Пожалуйста, создайте новую тему", Toast.LENGTH_SHORT).show()
             } else {
-                val word = Word(
-                    nativeWord = nativeWord,
-                    translation = translation,
-                    exampleNative = exampleNative,
-                    exampleTranslation = exampleTranslation,
-                    topicId = selectedTopicPair.second,
-                    isLearned = isLearned
-                )
-                lifecycleScope.launch {
-                    roomHelper.wordDao.insert(word)
-                    clearFields()
-                    openWordListFragment(selectedTopicPair.second)
+                val selectedTopicPair = topicSpinner.selectedItem as Pair<String, Int>
+                val nativeWord = wordNative.text.toString()
+                val translation = wordTranslation.text.toString()
+                val exampleNative = exampleNative.text.toString()
+                val exampleTranslation = exampleTranslation.text.toString()
+                val isLearned = learnedCheckBox.isChecked
+
+                if (nativeWord.length > 40 || translation.length > 40 || exampleNative.length > 40 || exampleTranslation.length > 40) {
+                    Toast.makeText(requireContext(), "Ни одно из полей не должно превышать 40 символов", Toast.LENGTH_SHORT).show()
+                } else if (nativeWord.isEmpty() || translation.isEmpty()) {
+                    Toast.makeText(requireContext(), "Слова на иностранном и родном языках не могут быть пустыми", Toast.LENGTH_SHORT).show()
+                } else {
+                    val word = Word(
+                        nativeWord = nativeWord,
+                        translation = translation,
+                        exampleNative = exampleNative,
+                        exampleTranslation = exampleTranslation,
+                        topicId = selectedTopicPair.second,
+                        isLearned = isLearned
+                    )
+                    lifecycleScope.launch {
+                        roomHelper.wordDao.insert(word)
+                        clearFields()
+                        openWordListFragment(selectedTopicPair.second)
+                    }
                 }
             }
         }

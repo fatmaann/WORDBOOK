@@ -2,14 +2,11 @@ package com.example.wordbook
 
 import android.content.Context
 import android.graphics.Color
-import android.util.Log
-import androidx.lifecycle.lifecycleScope
 import androidx.room.Room
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import kotlin.concurrent.thread
 
 class RoomHelper(context: Context) {
     private val db: WordBookDatabase = Room.databaseBuilder(

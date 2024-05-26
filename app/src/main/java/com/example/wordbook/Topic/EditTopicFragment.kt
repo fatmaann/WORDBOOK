@@ -8,9 +8,9 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
-import androidx.appcompat.app.AlertDialog
 import kotlinx.coroutines.launch
 
 class EditTopicFragment : Fragment() {
@@ -55,12 +55,14 @@ class EditTopicFragment : Fragment() {
         }
 
         selectColorButton.setOnClickListener {
-            val dialog = ColorPickerDialog(requireContext(), object : ColorPickerDialog.OnColorSelectedListener {
-                override fun onColorSelected(color: Int) {
-                    selectedColor = color
-                    updateColorButton()
-                }
-            })
+            val dialog = ColorPickerDialog(
+                requireContext(),
+                object : ColorPickerDialog.OnColorSelectedListener {
+                    override fun onColorSelected(color: Int) {
+                        selectedColor = color
+                        updateColorButton()
+                    }
+                })
             dialog.show()
         }
 
