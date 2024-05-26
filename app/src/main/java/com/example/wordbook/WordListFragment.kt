@@ -54,7 +54,24 @@ class WordListFragment : Fragment() {
                 } else {
                     view.findViewById<TextView>(R.id.noWordsText).visibility = View.VISIBLE
                 }
+
+                val editTopicIcon = view.findViewById<View>(R.id.edit_topic_icon)
+                editTopicIcon.setOnClickListener {
+                    openEditTopicFragment(topicId)
+                }
             }
         }
+    }
+
+    private fun openEditTopicFragment(topicId: Int) {
+        val fragment = EditTopicFragment().apply {
+            arguments = Bundle().apply {
+                putInt("TOPIC_ID", topicId)
+            }
+        }
+        parentFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container, fragment)
+            .addToBackStack(null)
+            .commit()
     }
 }

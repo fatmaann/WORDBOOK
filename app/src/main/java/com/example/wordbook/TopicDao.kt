@@ -1,9 +1,6 @@
 package com.example.wordbook
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 
 @Dao
 interface TopicDao {
@@ -15,4 +12,10 @@ interface TopicDao {
 
     @Query("SELECT * FROM topics WHERE id = :topicId")
     suspend fun getTopicNameById(topicId: Int): Topic?
+
+    @Update
+    suspend fun update(topic: Topic)
+
+    @Query("DELETE FROM topics WHERE id = :topicId")
+    suspend fun deleteTopic(topicId: Int)
 }

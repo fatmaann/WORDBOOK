@@ -21,5 +21,8 @@ interface WordDao {
 
     @Query("SELECT * FROM words WHERE isMistaken = 1")
     suspend fun getMistakenWords(): MutableList<Word>
+
+    @Query("DELETE FROM words WHERE topicId = :topicId")
+    suspend fun deleteWordsForTopic(topicId: Int)
 }
 
