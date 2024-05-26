@@ -1,14 +1,17 @@
 package com.example.wordbook
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 
 @Dao
 interface WordDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insert(word: Word)
+
+    @Query("DELETE FROM words WHERE id = :wordId")
+    suspend fun deleteWordById(wordId: Int)
+
+    @Query("UPDATE words SET nativeWord = :nativeWord, translation = :translation, exampleNative = :exampleNative, exampleTranslation = :exampleTranslation, topicId = :topicId, status = :status, isLearned = :isLearned, isMistaken = :isMistaken WHERE id = :wordId")
+    suspend fun updateWordById(wordId: Int, nativeWord: String, translation: String, exampleNative: String, exampleTranslation: String, topicId: Int, status: Int, isLearned: Boolean, isMistaken: Boolean)
 
     @Query("SELECT * FROM words WHERE topicId = :topicId")
     suspend fun getWordsForTopic(topicId: Int): MutableList<Word>
@@ -24,5 +27,9 @@ interface WordDao {
 
     @Query("DELETE FROM words WHERE topicId = :topicId")
     suspend fun deleteWordsForTopic(topicId: Int)
+
+    @Query("SELECT * FROM words WHERE id = :wordId")
+    suspend fun getWordById(wordId: Int): Word?
 }
+
 

@@ -16,6 +16,7 @@ class AddWordFragment : Fragment() {
     private lateinit var exampleNative: EditText
     private lateinit var exampleTranslation: EditText
     private lateinit var topicSpinner: Spinner
+    private lateinit var learnedCheckBox: CheckBox
     private lateinit var saveButton: Button
     private lateinit var roomHelper: RoomHelper
 
@@ -30,13 +31,14 @@ class AddWordFragment : Fragment() {
         exampleNative = view.findViewById(R.id.example_native)
         exampleTranslation = view.findViewById(R.id.example_translation)
         topicSpinner = view.findViewById(R.id.topic_spinner)
+        learnedCheckBox = view.findViewById(R.id.checkbox_learned)
         saveButton = view.findViewById(R.id.save_button)
 
         roomHelper = RoomHelper(requireContext())
 
         lifecycleScope.launch {
             val topics = roomHelper.topicDao.getAllTopics()
-            val filteredTopics = topics.filter { it.name != "Ошибки"}
+            val filteredTopics = topics.filter { it.id != 1 && it.id != 2 }
             val topicPairs = filteredTopics.map { it.name to it.id }
             val adapter = object : ArrayAdapter<Pair<String, Int>>(requireContext(), android.R.layout.simple_spinner_item, topicPairs) {
                 override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
@@ -61,6 +63,7 @@ class AddWordFragment : Fragment() {
             val translation = wordTranslation.text.toString()
             val exampleNative = exampleNative.text.toString()
             val exampleTranslation = exampleTranslation.text.toString()
+            val isLearned = learnedCheckBox.isChecked
 
             if (nativeWord.length > 40 || translation.length > 40 || exampleNative.length > 40 || exampleTranslation.length > 40) {
                 Toast.makeText(requireContext(), "Ни одно из полей не должно превышать 40 символов", Toast.LENGTH_SHORT).show()
@@ -73,11 +76,8 @@ class AddWordFragment : Fragment() {
                     exampleNative = exampleNative,
                     exampleTranslation = exampleTranslation,
                     topicId = selectedTopicPair.second,
-                    status = 0
+                    isLearned = isLearned
                 )
-                if (selectedTopicPair.first == "Выученные" && selectedTopicPair.second == 2) {
-                    word.isLearned = true
-                }
                 lifecycleScope.launch {
                     roomHelper.wordDao.insert(word)
                     clearFields()

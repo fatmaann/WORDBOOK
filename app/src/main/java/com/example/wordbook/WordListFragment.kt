@@ -23,7 +23,6 @@ class WordListFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_word_list, container, false)
         roomHelper = RoomHelper(requireContext())
-
         return view
     }
 
@@ -31,7 +30,9 @@ class WordListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         recyclerView = view.findViewById(R.id.recycler_view)
-        adapter = WordAdapter(emptyList())
+        adapter = WordAdapter(emptyList()) { word ->
+            openEditWordFragment(word)
+        }
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         recyclerView.adapter = adapter
 
@@ -61,6 +62,18 @@ class WordListFragment : Fragment() {
                 }
             }
         }
+    }
+
+    private fun openEditWordFragment(word: Word) {
+        val fragment = EditWordFragment().apply {
+            arguments = Bundle().apply {
+                putInt("WORD_ID", word.id)
+            }
+        }
+        parentFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container, fragment)
+            .addToBackStack(null)
+            .commit()
     }
 
     private fun openEditTopicFragment(topicId: Int) {

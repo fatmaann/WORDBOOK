@@ -45,7 +45,7 @@ class EditTopicFragment : Fragment() {
             if (topic != null) {
                 editTopicName.setText(topic.name)
                 selectedColor = topic.color
-                selectColorButton.setBackgroundColor(selectedColor)
+                updateColorButton()
 
                 if (topicId == 1 || topicId == 2) {
                     editTopicName.isEnabled = false
@@ -58,7 +58,7 @@ class EditTopicFragment : Fragment() {
             val dialog = ColorPickerDialog(requireContext(), object : ColorPickerDialog.OnColorSelectedListener {
                 override fun onColorSelected(color: Int) {
                     selectedColor = color
-                    selectColorButton.setBackgroundColor(color)
+                    updateColorButton()
                 }
             })
             dialog.show()
@@ -84,6 +84,11 @@ class EditTopicFragment : Fragment() {
         return view
     }
 
+    private fun updateColorButton() {
+        selectColorButton.setBackgroundColor(selectedColor)
+        selectColorButton.setTextColor(if (selectedColor == Color.WHITE) Color.BLACK else Color.WHITE)
+    }
+
     private fun showDeleteConfirmationDialog() {
         AlertDialog.Builder(requireContext())
             .setTitle("Удаление темы")
@@ -104,5 +109,4 @@ class EditTopicFragment : Fragment() {
             .setNegativeButton("Нет", null)
             .show()
     }
-
 }
