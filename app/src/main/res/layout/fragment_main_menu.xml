@@ -38,6 +38,6 @@
         android:id="@+id/add_button"
         style="@style/RegularButtonStyle"
         android:layout_marginBottom="15dp"
-        android:text="Добавить" />
+        android:text="Создать тему" />
 
 </RelativeLayout>

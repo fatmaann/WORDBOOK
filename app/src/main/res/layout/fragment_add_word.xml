@@ -6,12 +6,12 @@
 
 
     <TextView
-        android:id="@+id/title_text"
+        android:id="@+id/word_title_text"
         style="@style/TitleTextViewStyle"
         android:text="Новое слово" />
 
     <View
-        android:id="@+id/dividing_line"
+        android:id="@+id/word_dividing_line"
         style="@style/RoundedLineStyle"
         android:background="@drawable/rounded_recycler" />
 
@@ -37,28 +37,26 @@
     <EditText
         android:id="@+id/example_translation"
         style="@style/EditTextStyle"
+        android:layout_marginBottom="5dp"
         android:background="@drawable/cyrcle_text_edit"
         android:hint="Перевод примера" />
 
-
     <Spinner
         android:id="@+id/topic_spinner"
-        android:popupBackground="@drawable/rounded_spinner_window"
-        android:textSize="16sp"
-        style="@style/CustomSpinnerStyle"/>
+        style="@style/CustomSpinnerStyle"
+        android:popupBackground="@drawable/rounded_spinner_window" />
 
     <CheckBox
         android:id="@+id/checkbox_learned"
         style="@style/CheckBoxStyle"
-        android:textSize="15sp"
-        android:buttonTint="@color/blueButton"
         android:background="@drawable/cyrcle_text_edit"
-        android:text="Я знаю это слово" />
+        android:buttonTint="@color/blueButton"
+        android:text="Я знаю это слово"
+        android:textSize="15sp" />
 
     <Button
         android:id="@+id/save_button"
-        android:layout_width="match_parent"
         style="@style/RegularButtonStyle"
-        android:text="Сохранить" />
+        android:text="Добавить" />
 
 </LinearLayout>

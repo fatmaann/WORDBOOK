@@ -2,14 +2,23 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp">
+    android:orientation="vertical">
+
+
+    <TextView
+        android:id="@+id/title_text"
+        style="@style/TitleTextViewStyle"
+        android:text="Новая тема" />
+
+    <View
+        android:id="@+id/dividing_line"
+        style="@style/RoundedLineStyle"
+        android:background="@drawable/rounded_recycler" />
 
     <EditText
         android:id="@+id/editText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/inter_medium"
+        style="@style/EditTextStyle"
+        android:background="@drawable/cyrcle_text_edit"
         android:hint="Введите название темы"
         android:inputType="text" />
 
@@ -26,12 +35,7 @@
 
     <Button
         android:id="@+id/saveButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="16dp"
-        android:backgroundTint="#2999E5"
-        android:fontFamily="@font/inter_medium"
-        android:text="Сохранить"
-        android:textStyle="bold" />
+        style="@style/RegularButtonStyle"
+        android:text="Сохранить" />
+
 </LinearLayout>
