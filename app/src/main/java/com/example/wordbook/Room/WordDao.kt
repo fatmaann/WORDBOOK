@@ -37,6 +37,9 @@ interface WordDao {
 
     @Query("SELECT * FROM words WHERE topicId = :topicId AND isLearned = 0")
     suspend fun getUnlearnedWordsByTopicId(topicId: Int): MutableList<Word>
+
+    @Query("SELECT * FROM words WHERE isLearned = 0")
+    suspend fun getAllUnlearnedWords(): MutableList<Word>
 }
 
 
