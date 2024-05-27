@@ -3,14 +3,14 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:background="@drawable/rounded_recycler">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginBottom="16dp"
-        android:fontFamily="@font/inter_medium"
         android:text="Выберите цвет"
         android:textColor="#000000"
         android:textSize="18sp" />
@@ -48,8 +48,6 @@
             android:clickable="true"
             android:focusable="true"
             android:id="@+id/colorBlue"/>
-
-        <!-- Add more colors as needed -->
 
     </GridLayout>
 </LinearLayout>

@@ -1,28 +1,29 @@
 package com.example.wordbook
 
-import android.app.Dialog
 import android.content.Context
 import android.graphics.drawable.GradientDrawable
-import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.GridLayout
+import android.widget.PopupWindow
 
-class ColorPickerDialog(context: Context, private val listener: OnColorSelectedListener) : Dialog(context) {
+class ColorPickerPopup(context: Context, private val listener: OnColorSelectedListener) {
 
     interface OnColorSelectedListener {
         fun onColorSelected(color: Int)
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.color_picker_dialog)
+    private val popupWindow: PopupWindow
 
-        val colorGrid: GridLayout = findViewById(R.id.colorGrid)
+    init {
+        val view = LayoutInflater.from(context).inflate(R.layout.color_picker_popup, null)
+        popupWindow = PopupWindow(view, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, true)
 
         val colorViews = listOf(
-            findViewById<View>(R.id.colorRed),
-            findViewById<View>(R.id.colorGreen),
-            findViewById<View>(R.id.colorBlue)
+            view.findViewById<View>(R.id.colorRed),
+            view.findViewById<View>(R.id.colorGreen),
+            view.findViewById<View>(R.id.colorBlue)
         )
 
         val colors = listOf(
@@ -36,8 +37,12 @@ class ColorPickerDialog(context: Context, private val listener: OnColorSelectedL
             drawable.setColor(colors[index])
             view.setOnClickListener {
                 listener.onColorSelected(colors[index])
-                dismiss()
+                popupWindow.dismiss()
             }
         }
+    }
+
+    fun show(anchor: View) {
+        popupWindow.showAsDropDown(anchor)
     }
 }

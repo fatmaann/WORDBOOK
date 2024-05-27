@@ -38,15 +38,13 @@ class AddTopicFragment : Fragment() {
         colorButton = view.findViewById(R.id.colorButton)
 
         colorButton.setOnClickListener {
-            val dialog = ColorPickerDialog(
-                requireContext(),
-                object : ColorPickerDialog.OnColorSelectedListener {
-                    override fun onColorSelected(color: Int) {
-                        selectedColor = color
-                        colorButton.setBackgroundColor(color)
-                    }
-                })
-            dialog.show()
+            val popup = ColorPickerPopup(requireContext(), object : ColorPickerPopup.OnColorSelectedListener {
+                override fun onColorSelected(color: Int) {
+                    selectedColor = color
+                    colorButton.setBackgroundColor(color)
+                }
+            })
+            popup.show(it)
         }
 
         saveButton.setOnClickListener {

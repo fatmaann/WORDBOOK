@@ -55,15 +55,13 @@ class EditTopicFragment : Fragment() {
         }
 
         selectColorButton.setOnClickListener {
-            val dialog = ColorPickerDialog(
-                requireContext(),
-                object : ColorPickerDialog.OnColorSelectedListener {
-                    override fun onColorSelected(color: Int) {
-                        selectedColor = color
-                        updateColorButton()
-                    }
-                })
-            dialog.show()
+            val popup = ColorPickerPopup(requireContext(), object : ColorPickerPopup.OnColorSelectedListener {
+                override fun onColorSelected(color: Int) {
+                    selectedColor = color
+                    updateColorButton()
+                }
+            })
+            popup.show(it)
         }
 
         saveButton.setOnClickListener {
