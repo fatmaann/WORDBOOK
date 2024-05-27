@@ -22,16 +22,22 @@
         android:hint="Введите название темы"
         android:inputType="text" />
 
-    <Button
-        android:id="@+id/colorButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="16dp"
-        android:backgroundTint="#2999E5"
-        android:fontFamily="@font/inter_medium"
-        android:text="Выбрать цвет"
-        android:textStyle="bold" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/color_choose_text"
+            android:background="@drawable/cyrcle_text_edit"
+            style="@style/ColorChooseTextStyle"
+            android:text="Цвет темы"/>
+
+        <Button
+            android:id="@+id/colorButton"
+            style="@style/ColorChooseButtonStyle"
+            android:background="@drawable/circle_color_button"/>
+
+    </LinearLayout>
 
     <Button
         android:id="@+id/saveButton"

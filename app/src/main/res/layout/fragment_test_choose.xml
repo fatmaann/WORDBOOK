@@ -4,8 +4,81 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainMenuFragment"
-    android:orientation="vertical">
+    android:padding="16dp">
 
+    <!-- Заголовок -->
+    <TextView
+        android:id="@+id/titleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="Выберите тест"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:paddingBottom="16dp"/>
 
+    <!-- Тип теста -->
+    <TextView
+        android:id="@+id/testTypeTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/titleTextView"
+        android:text="Тип теста"
+        android:textSize="18sp"
+        android:paddingBottom="8dp"/>
+
+    <RadioGroup
+        android:id="@+id/radioGroupTestType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/testTypeTextView"
+        android:orientation="vertical">
+
+        <RadioButton
+            android:id="@+id/radioKnowWord"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Знаю ли я слово" />
+
+        <RadioButton
+            android:id="@+id/radioWriteWord"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Написать слово" />
+    </RadioGroup>
+
+    <!-- Тема -->
+    <TextView
+        android:id="@+id/topicTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/radioGroupTestType"
+        android:layout_marginTop="16dp"
+        android:text="Тема"
+        android:textSize="18sp"
+        android:paddingTop="16dp"
+        android:paddingBottom="8dp"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewTopics"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_below="@id/topicTextView"
+        android:layout_above="@id/buttonStartTest"
+        android:scrollbars="vertical" />
+
+    <!-- Кнопка начать тест -->
+    <Button
+        android:id="@+id/buttonStartTest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="16dp"
+        android:text="Начать тест"
+        android:padding="16dp"
+        android:textSize="16sp"
+        android:backgroundTint="#2999E5"
+        android:textColor="#FFFFFF"/>
 
 </RelativeLayout>

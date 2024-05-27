@@ -6,48 +6,41 @@
     android:padding="16dp"
     android:background="@drawable/rounded_recycler">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginBottom="16dp"
-        android:text="Выберите цвет"
-        android:textColor="#000000"
-        android:textSize="18sp" />
-
     <GridLayout
         android:id="@+id/colorGrid"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:columnCount="4">
+        android:columnCount="1">
 
-        <!-- Add color options here -->
         <View
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            style="@style/CircleColorExampleStyle"
             android:background="@drawable/circle"
-            android:layout_margin="8dp"
-            android:clickable="true"
-            android:focusable="true"
             android:id="@+id/colorRed"/>
 
         <View
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            style="@style/CircleColorExampleStyle"
             android:background="@drawable/circle"
-            android:layout_margin="8dp"
-            android:clickable="true"
-            android:focusable="true"
             android:id="@+id/colorGreen"/>
 
         <View
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            style="@style/CircleColorExampleStyle"
             android:background="@drawable/circle"
-            android:layout_margin="8dp"
-            android:clickable="true"
-            android:focusable="true"
             android:id="@+id/colorBlue"/>
+
+        <View
+            style="@style/CircleColorExampleStyle"
+            android:background="@drawable/circle"
+            android:id="@+id/colorRed1"/>
+
+        <View
+            style="@style/CircleColorExampleStyle"
+            android:background="@drawable/circle"
+            android:id="@+id/colorGreen1"/>
+
+        <View
+            style="@style/CircleColorExampleStyle"
+            android:background="@drawable/circle"
+            android:id="@+id/colorBlue1"/>
 
     </GridLayout>
 </LinearLayout>
