@@ -5,7 +5,7 @@ import android.graphics.drawable.GradientDrawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.GridLayout
+import android.util.Log
 import android.widget.PopupWindow
 
 class ColorPickerPopup(context: Context, private val listener: OnColorSelectedListener) {
@@ -18,7 +18,12 @@ class ColorPickerPopup(context: Context, private val listener: OnColorSelectedLi
 
     init {
         val view = LayoutInflater.from(context).inflate(R.layout.color_picker_popup, null)
-        popupWindow = PopupWindow(view, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, true)
+        popupWindow = PopupWindow(
+            view,
+            ViewGroup.LayoutParams.WRAP_CONTENT,
+            ViewGroup.LayoutParams.WRAP_CONTENT,
+            true
+        )
 
         val colorViews = listOf(
             view.findViewById<View>(R.id.colorRed),
@@ -50,5 +55,14 @@ class ColorPickerPopup(context: Context, private val listener: OnColorSelectedLi
 
     fun show(anchor: View) {
         popupWindow.showAsDropDown(anchor)
+
+        val location = IntArray(2)
+        anchor.getLocationOnScreen(location)
+        popupWindow.update(
+            location[0] + anchor.width + 22,
+            location[1] + 9,
+            popupWindow.width,
+            popupWindow.height
+        )
     }
 }

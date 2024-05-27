@@ -29,6 +29,7 @@
         <TextView
             android:id="@+id/color_choose_text"
             style="@style/ColorChooseTextStyle"
+            android:background="@drawable/cyrcle_text_edit"
             android:text="Цвет темы"/>
 
         <Button
