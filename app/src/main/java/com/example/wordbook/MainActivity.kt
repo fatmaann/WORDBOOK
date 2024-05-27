@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 R.id.menu_item_test -> {
-                    replaceFragment(WordListFragment())
+                    replaceFragment(TestChooseFragment())
                     true
                 }
                 else -> false

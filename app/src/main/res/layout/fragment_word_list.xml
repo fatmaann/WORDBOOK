@@ -28,11 +28,58 @@
         android:padding="8dp"
         android:src="@drawable/ic_baseline_edit_24" />
 
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:checkedButton="@+id/radioButtonUnlearned"
+        android:layout_below="@id/topicTitle"
+        android:layout_marginTop="16dp"
+        android:visibility="gone">
+
+        <RadioButton
+            android:id="@+id/radioButtonUnlearned"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@android:color/transparent"
+            android:gravity="center"
+            android:text="Невыученные"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+        <View
+            android:id="@+id/underline_view_unlearned"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@android:color/black"
+            android:visibility="gone" />
+
+        <RadioButton
+            android:id="@+id/radioButtonLearned"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@android:color/transparent"
+            android:gravity="center"
+            android:text="Выученные"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+        <View
+            android:id="@+id/underline_view_learned"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@android:color/black"
+            android:visibility="gone" />
+
+    </RadioGroup>
+
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="350dp"
         android:layout_height="630dp"
-        android:layout_below="@id/topicTitle"
+        android:layout_below="@id/radioGroup"
         android:layout_centerHorizontal="true"
         android:background="@drawable/rounded_recycler"
         android:clipToPadding="false"
@@ -43,7 +90,7 @@
         android:id="@+id/noWordsText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/topicTitle"
+        android:layout_below="@id/radioGroup"
         android:text="Нет слов в данной теме"
         android:textSize="18sp"
         android:padding="16dp"
