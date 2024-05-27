@@ -23,6 +23,7 @@ class EditTopicFragment : Fragment() {
     private lateinit var roomHelper: RoomHelper
     private var topicId: Int = -1
     private var selectedColor: Int = Color.WHITE
+    private var selectedColorForButton: Int = Color.TRANSPARENT
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,7 +32,7 @@ class EditTopicFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_edit_topic, container, false)
 
         editTopicName = view.findViewById(R.id.edit_topic_name)
-        selectColorButton = view.findViewById(R.id.select_color_button)
+        selectColorButton = view.findViewById(R.id.colorButton)
         saveButton = view.findViewById(R.id.save_button)
         backButton = view.findViewById(R.id.back_button)
         deleteButton = view.findViewById(R.id.delete_button)
@@ -45,6 +46,12 @@ class EditTopicFragment : Fragment() {
             if (topic != null) {
                 editTopicName.setText(topic.name)
                 selectedColor = topic.color
+                if (selectedColor == Color.WHITE) {
+                    selectedColorForButton = Color.TRANSPARENT
+                }
+                else {
+                    selectedColorForButton = selectedColor
+                }
                 updateColorButton()
 
                 if (topicId == 1 || topicId == 2) {
@@ -57,7 +64,18 @@ class EditTopicFragment : Fragment() {
         selectColorButton.setOnClickListener {
             val popup = ColorPickerPopup(requireContext(), object : ColorPickerPopup.OnColorSelectedListener {
                 override fun onColorSelected(color: Int) {
-                    selectedColor = color
+                    if (color == Color.TRANSPARENT) {
+                        selectedColor = Color.WHITE
+                    }
+                    else {
+                        selectedColor = color
+                    }
+                    if (color == Color.WHITE) {
+                        selectedColorForButton = Color.TRANSPARENT
+                    }
+                    else {
+                        selectedColorForButton = color
+                    }
                     updateColorButton()
                 }
             })
@@ -85,8 +103,8 @@ class EditTopicFragment : Fragment() {
     }
 
     private fun updateColorButton() {
-        selectColorButton.setBackgroundColor(selectedColor)
-        selectColorButton.setTextColor(if (selectedColor == Color.WHITE) Color.BLACK else Color.WHITE)
+        selectColorButton.setBackgroundColor(selectedColorForButton)
+//        selectColorButton.setTextColor(if (selectedColor == Color.WHITE) Color.BLACK else Color.WHITE)
     }
 
     private fun showDeleteConfirmationDialog() {

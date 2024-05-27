@@ -40,8 +40,18 @@ class AddTopicFragment : Fragment() {
         colorButton.setOnClickListener {
             val popup = ColorPickerPopup(requireContext(), object : ColorPickerPopup.OnColorSelectedListener {
                 override fun onColorSelected(color: Int) {
-                    selectedColor = color
-                    colorButton.setBackgroundColor(color)
+                    if (color == Color.TRANSPARENT) {
+                        selectedColor = Color.WHITE
+                    }
+                    else {
+                        selectedColor = color
+                    }
+                    if (color == Color.WHITE) {
+                        colorButton.setBackgroundColor(Color.TRANSPARENT)
+                    }
+                    else {
+                        colorButton.setBackgroundColor(color)
+                    }
                 }
             })
             popup.show(it)

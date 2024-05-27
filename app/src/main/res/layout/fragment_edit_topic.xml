@@ -12,19 +12,29 @@
         android:textSize="18sp"
         android:layout_marginTop="16dp"/>
 
-    <Button
-        android:id="@+id/select_color_button"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/edit_topic_name"
-        android:layout_marginTop="16dp"
-        android:text="Выбрать цвет"/>
+        android:id="@+id/color_linear_layout"
+        android:layout_below="@id/edit_topic_name">
+
+        <TextView
+            android:id="@+id/color_choose_text"
+            style="@style/ColorChooseTextStyle"
+            android:text="Цвет темы"/>
+
+        <Button
+            android:id="@+id/colorButton"
+            style="@style/ColorChooseButtonStyle"
+            android:backgroundTint="@android:color/transparent" />
+
+    </LinearLayout>
 
     <Button
         android:id="@+id/save_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/select_color_button"
+        android:layout_below="@id/color_linear_layout"
         android:layout_marginTop="16dp"
         android:text="Сохранить"/>
 

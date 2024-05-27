@@ -28,14 +28,13 @@
 
         <TextView
             android:id="@+id/color_choose_text"
-            android:background="@drawable/cyrcle_text_edit"
             style="@style/ColorChooseTextStyle"
             android:text="Цвет темы"/>
 
         <Button
             android:id="@+id/colorButton"
             style="@style/ColorChooseButtonStyle"
-            android:background="@drawable/circle_color_button"/>
+            android:backgroundTint="@android:color/transparent" />
 
     </LinearLayout>
 
