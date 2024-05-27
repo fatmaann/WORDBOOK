@@ -1,5 +1,6 @@
 package com.example.wordbook
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -20,6 +21,7 @@ class AddWordFragment : Fragment() {
     private lateinit var saveButton: Button
     private lateinit var roomHelper: RoomHelper
 
+    @SuppressLint("ResourceType")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -53,7 +55,7 @@ class AddWordFragment : Fragment() {
                     return view
                 }
             }
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            adapter.setDropDownViewResource(R.drawable.spinner_window_drawable)
             topicSpinner.adapter = adapter
         }
 
