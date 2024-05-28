@@ -2,61 +2,69 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp">
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/word_editor_title_text"
+        style="@style/TitleTextViewStyle"
+        android:text="Редактор слова" />
+
+    <View
+        android:id="@+id/word_editor_dividing_line"
+        style="@style/RoundedLineStyle"
+        android:background="@drawable/rounded_recycler" />
 
     <EditText
         android:id="@+id/edit_native_word"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/EditTextStyle"
+        android:background="@drawable/cyrcle_text_edit"
         android:hint="Слово на родном языке" />
 
     <EditText
         android:id="@+id/edit_translation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/EditTextStyle"
+        android:background="@drawable/cyrcle_text_edit"
         android:hint="Перевод" />
 
     <EditText
         android:id="@+id/edit_example_native"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/EditTextStyle"
+        android:background="@drawable/cyrcle_text_edit"
         android:hint="Пример на родном языке" />
 
     <EditText
         android:id="@+id/edit_example_translation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/EditTextStyle"
+        android:background="@drawable/cyrcle_text_edit"
         android:hint="Перевод примера" />
 
     <Spinner
         android:id="@+id/select_topic_spinner"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Выберите тему" />
+        style="@style/CustomSpinnerStyle"
+        android:popupBackground="@drawable/rounded_spinner_window" />
 
     <CheckBox
         android:id="@+id/checkbox_learned"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/CheckBoxStyle"
+        android:background="@drawable/cyrcle_text_edit"
+        android:buttonTint="@color/blueButton"
         android:text="Я знаю это слово" />
 
     <Button
         android:id="@+id/save_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/RegularButtonStyle"
+        android:layout_marginBottom="5dp"
         android:text="Сохранить" />
 
     <Button
         android:id="@+id/delete_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/RegularButtonStyle"
+        android:layout_marginBottom="5dp"
         android:text="Удалить" />
 
     <Button
         android:id="@+id/back_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/RegularButtonStyle"
         android:text="Назад" />
 
 </LinearLayout>

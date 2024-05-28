@@ -3,36 +3,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainMenuFragment"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".MainMenuFragment">
 
     <TextView
         android:id="@+id/title_text"
-        android:fontFamily="@font/inter_bold"
         style="@style/TitleTextViewStyle"
+        android:fontFamily="@font/inter_bold"
         android:text="Ваши темы" />
 
     <View
         android:id="@+id/dividing_line"
-        android:layout_below="@id/title_text"
         style="@style/RoundedLineStyle"
+        android:layout_below="@id/title_text"
         android:background="@drawable/rounded_recycler" />
 
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
-        android:layout_width="350dp"
-        android:layout_height="630dp"
+        style="@style/BackGreySpaceStyle"
         android:layout_above="@+id/add_button"
         android:layout_below="@+id/dividing_line"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginBottom="11dp"
-        android:background="@drawable/rounded_recycler"
-        android:clipToPadding="false"
-        android:padding="16dp"/>
+        android:background="@drawable/rounded_recycler" />
 
     <Button
         android:id="@+id/add_button"
