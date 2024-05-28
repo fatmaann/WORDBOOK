@@ -68,10 +68,15 @@ class TestChooseFragment : Fragment() {
                 if (words.isEmpty()) {
                     Toast.makeText(context, "Нет слов для тестирования", Toast.LENGTH_SHORT).show()
                 } else {
-                    val intent = Intent(context, TestActivity::class.java)
-                    val wordsJson = Gson().toJson(words)
-                    intent.putExtra("wordsJson", wordsJson)
-                    startActivity(intent)
+                    if (radioKnowWord.isChecked) {
+                        val intent = Intent(context, TestKnowledgeActivity::class.java)
+                        intent.flags = Intent.FLAG_ACTIVITY_NO_HISTORY
+                        val wordsJson = Gson().toJson(words)
+                        intent.putExtra("wordsJson", wordsJson)
+                        startActivity(intent)
+                    } else {
+
+                    }
                 }
             }
         }

@@ -17,6 +17,7 @@ class IntroActivity : AppCompatActivity() {
         imageViewIntro.alpha = 0f
         imageViewIntro.animate().setDuration(1700).alpha(1f).withEndAction {
             val intent = Intent(this, MainActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NO_HISTORY
             startActivity(intent)
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
             finish()

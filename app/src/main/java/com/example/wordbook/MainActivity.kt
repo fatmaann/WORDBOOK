@@ -1,5 +1,6 @@
 package com.example.wordbook
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -12,6 +13,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        clearBackStack()
 
         bottomNavigationView = findViewById(R.id.bottom_navigation)
         bottomNavigationView.setOnNavigationItemSelectedListener { menuItem ->
@@ -32,8 +35,13 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        clearBackStack()
-        replaceFragment(MainMenuFragment())
+        if (intent.hasExtra("correctAnswers") && intent.hasExtra("totalQuestions")) {
+            val correctAnswers = intent.getIntExtra("correctAnswers", 0)
+            val totalQuestions = intent.getIntExtra("totalQuestions", 0)
+            showResultsFragment(correctAnswers, totalQuestions)
+        } else {
+            replaceFragment(MainMenuFragment())
+        }
     }
 
     private fun replaceFragment(fragment: Fragment) {
@@ -49,5 +57,13 @@ class MainActivity : AppCompatActivity() {
             val firstFragment = fragmentManager.getBackStackEntryAt(0)
             fragmentManager.popBackStack(firstFragment.id, FragmentManager.POP_BACK_STACK_INCLUSIVE)
         }
+    }
+
+    private fun showResultsFragment(correctAnswers: Int, totalQuestions: Int) {
+        val fragment = ResultsFragment.newInstance(correctAnswers, totalQuestions)
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container, fragment)
+            .addToBackStack(null)
+            .commit()
     }
 }

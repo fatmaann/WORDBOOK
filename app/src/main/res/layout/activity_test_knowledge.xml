@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/buttonFinishTest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="16dp"
+        android:text="Закончить тест" />
+
+    <FrameLayout
+        android:id="@+id/cardContainer"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_centerInParent="true"
+        android:layout_margin="16dp"
+        android:gravity="center">
+
+        <include
+            android:id="@+id/cardFront"
+            layout="@layout/card_front"
+            android:layout_width="250dp"
+            android:layout_height="170dp"
+            android:layout_gravity="center" />
+
+        <include
+            android:id="@+id/cardBack"
+            layout="@layout/card_back"
+            android:layout_width="250dp"
+            android:layout_height="170dp"
+            android:layout_gravity="center" />
+
+    </FrameLayout>
+
+    <Button
+        android:id="@+id/buttonShowTranslation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/cardContainer"
+        android:layout_marginTop="16dp"
+        android:text="Показать перевод" />
+
+    <LinearLayout
+        android:id="@+id/buttonLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/cardContainer"
+        android:layout_marginTop="16dp"
+        android:visibility="gone"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/buttonKnow"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Знал" />
+
+        <Button
+            android:id="@+id/buttonDontKnow"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Не знал" />
+    </LinearLayout>
+
+</RelativeLayout>
