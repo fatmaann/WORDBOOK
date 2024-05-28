@@ -3,25 +3,36 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <TextView
+        android:id="@+id/topic_editor_title_text"
+        style="@style/TitleTextViewStyle"
+        android:text="Редактор темы" />
+
+    <View
+        android:id="@+id/topic_editor_dividing_line"
+        style="@style/RoundedLineStyle"
+        android:layout_below="@id/topic_editor_title_text"
+        android:background="@drawable/rounded_recycler" />
+
     <EditText
         android:id="@+id/edit_topic_name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/EditTextStyle"
+        android:layout_below="@id/topic_editor_dividing_line"
+        android:background="@drawable/cyrcle_text_edit"
         android:hint="Название темы"
-        android:padding="16dp"
-        android:textSize="18sp"
-        android:layout_marginTop="16dp"/>
+        android:inputType="text" />
 
     <LinearLayout
+        android:id="@+id/color_linear_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/color_linear_layout"
         android:layout_below="@id/edit_topic_name">
 
         <TextView
             android:id="@+id/color_choose_text"
             style="@style/ColorChooseTextStyle"
-            android:text="Цвет темы"/>
+            android:background="@drawable/cyrcle_text_edit"
+            android:text="Цвет темы" />
 
         <Button
             android:id="@+id/colorButton"
@@ -32,26 +43,20 @@
 
     <Button
         android:id="@+id/save_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/RegularButtonRelativeStyle"
         android:layout_below="@id/color_linear_layout"
-        android:layout_marginTop="16dp"
-        android:text="Сохранить"/>
+        android:text="Сохранить" />
 
     <Button
         android:id="@+id/back_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/RegularButtonRelativeStyle"
         android:layout_below="@id/save_button"
-        android:layout_marginTop="16dp"
-        android:text="Назад"/>
+        android:text="Назад" />
 
     <Button
         android:id="@+id/delete_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/RegularButtonRelativeStyle"
         android:layout_below="@id/back_button"
-        android:layout_marginTop="16dp"
-        android:text="Удалить тему"
-        android:backgroundTint="#FF0000"/>
+        android:text="Удалить тему" />
+
 </RelativeLayout>
