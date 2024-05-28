@@ -51,8 +51,7 @@
         style="@style/CheckBoxStyle"
         android:background="@drawable/cyrcle_text_edit"
         android:buttonTint="@color/blueButton"
-        android:text="Я знаю это слово"
-        android:textSize="15sp" />
+        android:text="Я знаю это слово" />
 
     <Button
         android:id="@+id/save_button"

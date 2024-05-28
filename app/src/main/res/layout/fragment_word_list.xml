@@ -5,94 +5,62 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+
     <TextView
         android:id="@+id/topicTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="16dp"
-        android:text="Название темы"
-        android:textColor="#000000"
-        android:textSize="18sp"
-        android:textStyle="bold" />
+        style="@style/TitleTextViewStyle"
+        android:text="Название темы" />
+
+    <View
+        android:id="@+id/word_dividing_line"
+        style="@style/RoundedLineStyle"
+        android:layout_below="@id/topicTitle"
+        android:layout_marginBottom="0dp"
+        android:background="@drawable/rounded_recycler" />
+
 
     <ImageView
         android:id="@+id/edit_topic_icon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="16dp"
+        style="@style/UpperRightCornerButtonStyle"
         android:layout_toEndOf="@id/topicTitle"
-        android:clickable="true"
-        android:contentDescription="Edit Topic"
-        android:focusable="true"
-        android:padding="8dp"
         android:src="@drawable/ic_baseline_edit_24" />
 
     <RadioGroup
         android:id="@+id/radioGroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:layout_below="@id/word_dividing_line"
         android:checkedButton="@+id/radioButtonUnlearned"
-        android:layout_below="@id/topicTitle"
-        android:layout_marginTop="16dp"
+        android:orientation="horizontal"
         android:visibility="gone">
 
         <RadioButton
             android:id="@+id/radioButtonUnlearned"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:button="@android:color/transparent"
-            android:gravity="center"
-            android:text="Невыученные"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
-
-        <View
-            android:id="@+id/underline_view_unlearned"
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:background="@android:color/black"
-            android:visibility="gone" />
+            style="@style/NoRippleRadioButton"
+            android:layout_marginStart='52dp'
+            android:text="Невыученные" />
 
         <RadioButton
             android:id="@+id/radioButtonLearned"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:button="@android:color/transparent"
-            android:gravity="center"
-            android:text="Выученные"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
-
-        <View
-            android:id="@+id/underline_view_learned"
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:background="@android:color/black"
-            android:visibility="gone" />
+            style="@style/NoRippleRadioButton"
+            android:layout_marginStart='60dp'
+            android:text="Выученные" />
 
     </RadioGroup>
 
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
-        android:layout_width="350dp"
-        android:layout_height="630dp"
+        style="@style/BackGreySpaceStyle"
         android:layout_below="@id/radioGroup"
         android:layout_centerHorizontal="true"
         android:background="@drawable/rounded_recycler"
-        android:clipToPadding="false"
-        android:padding="16dp"
         android:visibility="gone" />
 
     <TextView
         android:id="@+id/noWordsText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/NoLearnedWordsTextStyle"
         android:layout_below="@id/radioGroup"
-        android:text="Нет слов в данной теме"
-        android:textSize="18sp"
-        android:padding="16dp"
-        android:visibility="gone" />
+        android:text="Нет слов в данной теме" />
+
 </RelativeLayout>

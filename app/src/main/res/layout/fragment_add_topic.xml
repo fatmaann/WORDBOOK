@@ -6,12 +6,12 @@
 
 
     <TextView
-        android:id="@+id/title_text"
+        android:id="@+id/topic_title_text"
         style="@style/TitleTextViewStyle"
         android:text="Новая тема" />
 
     <View
-        android:id="@+id/dividing_line"
+        android:id="@+id/topic_dividing_line"
         style="@style/RoundedLineStyle"
         android:background="@drawable/rounded_recycler" />
 
