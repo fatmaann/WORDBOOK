@@ -27,11 +27,11 @@ class RoomHelper(context: Context) {
         withContext(Dispatchers.IO) {
             val existingTopics = topicDao.getAllTopics()
             if (existingTopics.isEmpty()) {
-                topicDao.insert(Topic(name = "Ошибки", color = Color.WHITE))
+                topicDao.insert(Topic(name = "Ошибки", color = 0xFFEB2828.toInt()))
 //                Log.i("insert", "I am here 1 ")
-                topicDao.insert(Topic(name = "Выученные", color = Color.WHITE))
+                topicDao.insert(Topic(name = "Выученные", color = 0xFFDC880A.toInt()))
 //                Log.i("insert", "I am here 2")
-                topicDao.insert(Topic(name = "Новая тема", color = Color.WHITE))
+                topicDao.insert(Topic(name = "Новая тема", color = 0xFFE5CF06.toInt()))
             }
         }
     }

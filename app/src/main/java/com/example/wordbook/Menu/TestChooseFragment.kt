@@ -73,12 +73,14 @@ class TestChooseFragment : Fragment() {
                         intent.flags = Intent.FLAG_ACTIVITY_NO_HISTORY
                         val wordsJson = Gson().toJson(words)
                         intent.putExtra("wordsJson", wordsJson)
+                        intent.putExtra("topicName", selectedTopic?.name)
                         startActivity(intent)
                     } else if (radioWriteWord.isChecked) {
                         val intent = Intent(context, TestWritingActivity::class.java)
                         intent.flags = Intent.FLAG_ACTIVITY_NO_HISTORY
                         val wordsJson = Gson().toJson(words)
                         intent.putExtra("wordsJson", wordsJson)
+                        intent.putExtra("topicName", selectedTopic?.name)
                         startActivity(intent)
                     }
                 }

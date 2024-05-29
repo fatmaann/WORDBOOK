@@ -1,9 +1,11 @@
 package com.example.wordbook
 
+import android.graphics.Typeface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.TextView
 import android.widget.ToggleButton
@@ -64,9 +66,26 @@ class WordListFragment : Fragment() {
                     updateWordList(topicId, isCheckedLearned)
                     val radioGroup: RadioGroup = view.findViewById(R.id.radioGroup)
                     radioGroup.visibility = View.VISIBLE
+
+                    val radioButtonLearned: RadioButton = view.findViewById(R.id.radioButtonLearned)
+                    val radioButtonUnlearned: RadioButton = view.findViewById(R.id.radioButtonUnlearned)
+
+                    fun updateButtonStyles() {
+                        if (isCheckedLearned) {
+                            radioButtonLearned.setTypeface(null, Typeface.BOLD)
+                            radioButtonUnlearned.setTypeface(null, Typeface.NORMAL)
+                        } else {
+                            radioButtonLearned.setTypeface(null, Typeface.NORMAL)
+                            radioButtonUnlearned.setTypeface(null, Typeface.BOLD)
+                        }
+                    }
+
+                    updateButtonStyles()
+
                     radioGroup.setOnCheckedChangeListener { group, checkedId ->
                         isCheckedLearned = checkedId == R.id.radioButtonLearned
                         updateWordList(topicId, isCheckedLearned)
+                        updateButtonStyles()
                     }
                 }
 
@@ -79,6 +98,9 @@ class WordListFragment : Fragment() {
     }
 
     private fun openEditWordFragment(word: Word) {
+        val activity = context as MainActivity
+        MainActivity.setAllButtonsGrey(activity.bottomNavigationView)
+
         val fragment = EditWordFragment().apply {
             arguments = Bundle().apply {
                 putInt("WORD_ID", word.id)
@@ -91,6 +113,9 @@ class WordListFragment : Fragment() {
     }
 
     private fun openEditTopicFragment(topicId: Int) {
+        val activity = context as MainActivity
+        MainActivity.setAllButtonsGrey(activity.bottomNavigationView)
+
         val fragment = EditTopicFragment().apply {
             arguments = Bundle().apply {
                 putInt("TOPIC_ID", topicId)

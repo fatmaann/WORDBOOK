@@ -37,6 +37,9 @@ class MainMenuFragment : Fragment(), AddTopicFragment.OnTopicSavedListener {
 
         val addButton: Button = view.findViewById(R.id.add_button)
         addButton.setOnClickListener {
+            val activity = context as MainActivity
+            MainActivity.setAllButtonsGrey(activity.bottomNavigationView)
+
             val addTopicFragment = AddTopicFragment()
             addTopicFragment.setListener(this)
             parentFragmentManager.beginTransaction()

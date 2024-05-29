@@ -7,7 +7,7 @@ import androidx.fragment.app.FragmentManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var bottomNavigationView: BottomNavigationView
+    lateinit var bottomNavigationView: BottomNavigationView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,15 +19,15 @@ class MainActivity : AppCompatActivity() {
         bottomNavigationView.setOnNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.menu_item_home -> {
-                    replaceFragment(MainMenuFragment())
+                    replaceFragment(MainMenuFragment(), R.id.menu_item_home)
                     true
                 }
                 R.id.menu_item_add -> {
-                    replaceFragment(AddWordFragment())
+                    replaceFragment(AddWordFragment(), R.id.menu_item_add)
                     true
                 }
                 R.id.menu_item_test -> {
-                    replaceFragment(TestChooseFragment())
+                    replaceFragment(TestChooseFragment(), R.id.menu_item_test)
                     true
                 }
                 else -> false
@@ -39,15 +39,25 @@ class MainActivity : AppCompatActivity() {
             val totalQuestions = intent.getIntExtra("totalQuestions", 0)
             showResultsFragment(correctAnswers, totalQuestions)
         } else {
-            replaceFragment(MainMenuFragment())
+            replaceFragment(MainMenuFragment(), R.id.menu_item_home)
         }
     }
 
-    private fun replaceFragment(fragment: Fragment) {
+    companion object {
+        fun setAllButtonsGrey(bottomNavigationView: BottomNavigationView) {
+            for (i in 0 until 4) {
+                bottomNavigationView.menu.getItem(i).isChecked = false
+            }
+        }
+    }
+
+    private fun replaceFragment(fragment: Fragment, itemId: Int) {
         supportFragmentManager.beginTransaction()
             .replace(R.id.fragment_container, fragment)
             .addToBackStack(null)
             .commit()
+
+        bottomNavigationView.menu.findItem(itemId).isChecked = true
     }
 
     private fun clearBackStack() {

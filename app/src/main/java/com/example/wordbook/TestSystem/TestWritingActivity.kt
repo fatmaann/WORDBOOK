@@ -25,8 +25,11 @@ class TestWritingActivity : AppCompatActivity() {
     private lateinit var wordDao: WordDao
     private lateinit var roomHelper: RoomHelper
 
+    private lateinit var topicName: TextView
     private lateinit var textWord: TextView
     private lateinit var textTranslation: TextView
+    private lateinit var exampleFront: TextView
+    private lateinit var exampleBack: TextView
     private lateinit var editText: EditText
     private lateinit var checkButton: Button
     private lateinit var continueButton: Button
@@ -45,8 +48,13 @@ class TestWritingActivity : AppCompatActivity() {
         words = Gson().fromJson(wordsJson, object : TypeToken<MutableList<Word>>() {}.type)
         words.shuffle()
 
+        topicName = findViewById(R.id.topicName)
+        topicName.text = intent.getStringExtra("topicName")
+
         textWord = findViewById(R.id.textWord)
         textTranslation = findViewById(R.id.textTranslation)
+        exampleFront = findViewById(R.id.textExampleFront)
+        exampleBack = findViewById(R.id.textExampleBack)
         editText = findViewById(R.id.editText)
         buttonFinishTest = findViewById(R.id.buttonFinishTest)
         checkButton = findViewById(R.id.checkButton)
@@ -60,7 +68,9 @@ class TestWritingActivity : AppCompatActivity() {
 
         checkButton.setOnClickListener {
             lifecycleScope.launch {
-                checkAnswer()
+                if (editText.text.isNotEmpty()) {
+                    checkAnswer()
+                }
             }
         }
 
@@ -77,6 +87,18 @@ class TestWritingActivity : AppCompatActivity() {
         val word = words[currentIndex]
         textWord.text = word.nativeWord
         textTranslation.text = word.translation
+        if (word.exampleNative.isEmpty()) {
+            exampleFront.visibility = View.GONE
+        } else {
+            exampleFront.text = word.exampleNative
+            exampleFront.visibility = View.VISIBLE
+        }
+        if (word.exampleTranslation.isEmpty()) {
+            exampleBack.visibility = View.GONE
+        } else {
+            exampleBack.text = word.exampleTranslation
+            exampleBack.visibility = View.VISIBLE
+        }
         cardFront.visibility = View.VISIBLE
         cardBack.visibility = View.GONE
         editText.text.clear()

@@ -25,6 +25,9 @@ class ResultsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        val activity = context as MainActivity
+        MainActivity.setAllButtonsGrey(activity.bottomNavigationView)
+
         val view = inflater.inflate(R.layout.fragment_results, container, false)
         val correctAnswers = arguments?.getInt("correctAnswers") ?: 0
         val totalQuestions = arguments?.getInt("totalQuestions") ?: 0
