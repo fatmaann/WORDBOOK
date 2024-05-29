@@ -120,14 +120,14 @@ class TestWritingActivity : AppCompatActivity() {
             wordDao.updateWordById(word.id, word.nativeWord, word.translation, word.exampleNative, word.exampleTranslation, word.topicId, word.status, word.isLearned, word.isMistaken)
             correctAnswersCount++
             allAnswersCount++
-            cardBack.setBackgroundColor(resources.getColor(android.R.color.holo_green_light))
+            cardBack.setBackgroundResource(R.drawable.card_background_green)
         } else {
             word.status--
             if (word.status < 0) word.status = 0
             word.isMistaken = true
             wordDao.updateWordById(word.id, word.nativeWord, word.translation, word.exampleNative, word.exampleTranslation, word.topicId, word.status, word.isLearned, word.isMistaken)
             allAnswersCount++
-            cardBack.setBackgroundColor(resources.getColor(android.R.color.holo_red_light))
+            cardBack.setBackgroundResource(R.drawable.card_background_red)
         }
 
         val animOut = AnimationUtils.loadAnimation(this, R.anim.card_flip_left_out)
