@@ -3,27 +3,30 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
     <TextView
         android:id="@+id/topicName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/TitleTextViewStyle"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="@font/inter_bold"
         android:text="Название темы" />
 
-    <Button
-        android:id="@+id/buttonFinishTest"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_margin="16dp"
-        android:text="Закончить тест" />
+    <View
+        android:id="@+id/dividing_line"
+        style="@style/RoundedLineStyle"
+        android:layout_below="@id/topicName"
+        android:background="@drawable/rounded_recycler" />
+
 
     <FrameLayout
         android:id="@+id/cardContainer"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:layout_centerInParent="true"
-        android:layout_margin="16dp"
-        android:gravity="center">
+        android:layout_height="wrap_content"
+        android:layout_below="@id/dividing_line"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="31dp">
 
         <include
             android:id="@+id/cardFront"
@@ -55,21 +58,21 @@
 
     <Button
         android:id="@+id/checkButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/RegularButtonRelativeStyle"
         android:layout_below="@id/editText"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"
         android:text="Проверить" />
 
     <Button
         android:id="@+id/continueButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/RegularButtonRelativeStyle"
         android:layout_below="@id/checkButton"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"
-        android:text="Продолжить"
-        android:visibility="gone" />
+        android:text="Продолжить" />
+
+    <Button
+        android:id="@+id/buttonFinishTest"
+        style="@style/RegularButtonRelativeStyle"
+        android:layout_below="@id/continueButton"
+        android:backgroundTint="#EB2828"
+        android:text="Завершить тест" />
 
 </RelativeLayout>

@@ -1,23 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="100dp"
+    android:layout_height="wrap_content"
+    android:background="@drawable/card_background"
     android:gravity="center"
     android:orientation="vertical"
-    android:padding="16dp"
-    android:background="@drawable/card_background">
+    android:padding="16dp">
 
     <TextView
         android:id="@+id/textWord"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/KnowTestTextCardStyle"
+        android:background="@drawable/circle_main_test_big_back"
         android:text="Слово"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
         android:id="@+id/textExampleFront"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/KnowTestTextCardStyle"
+        android:layout_marginBottom="0dp"
+        android:background="@drawable/circle_main_test_big_back"
         android:text="Пример"
         android:textAppearance="?android:attr/textAppearanceLarge" />
+
 </LinearLayout>
