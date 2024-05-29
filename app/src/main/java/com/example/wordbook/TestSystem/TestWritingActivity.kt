@@ -153,7 +153,6 @@ class TestWritingActivity : AppCompatActivity() {
             cardBack.startAnimation(animOutLeft)
             cardBack.postDelayed({
                 updateCard()
-                cardFront.setBackgroundColor(resources.getColor(android.R.color.white))
                 editText.isEnabled = true
                 checkButton.visibility = View.VISIBLE
                 continueButton.visibility = View.GONE
