@@ -14,5 +14,5 @@ data class Word(
     @ColumnInfo(name = "topicId") val topicId: Int,
     @ColumnInfo(name = "status") var status: Int = 0,
     @ColumnInfo(name = "isLearned") var isLearned: Boolean = false,
-    @ColumnInfo(name = "isMistaken") val isMistaken: Boolean = false
+    @ColumnInfo(name = "isMistaken") var isMistaken: Boolean = false
 )

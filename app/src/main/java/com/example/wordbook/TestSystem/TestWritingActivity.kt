@@ -1,71 +1,71 @@
 package com.example.wordbook
 
-import android.app.Activity
 import android.content.Intent
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.view.animation.AnimationUtils
 import android.widget.Button
+import android.widget.EditText
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContentProviderCompat.requireContext
+import androidx.lifecycle.lifecycleScope
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import kotlinx.coroutines.launch
+import java.util.Collections.shuffle
 
-class TestKnowledgeActivity : AppCompatActivity() {
+class TestWritingActivity : AppCompatActivity() {
 
     private lateinit var words: MutableList<Word>
     private var correctAnswersCount = 0
     private var allAnswersCount = 0
+    private var currentIndex = 0
     private lateinit var topicDao: TopicDao
     private lateinit var wordDao: WordDao
     private lateinit var roomHelper: RoomHelper
-    private var currentIndex = 0
 
     private lateinit var textWord: TextView
     private lateinit var textTranslation: TextView
-    private lateinit var buttonShowTranslation: Button
-    private lateinit var buttonKnow: Button
-    private lateinit var buttonDontKnow: Button
+    private lateinit var editText: EditText
+    private lateinit var checkButton: Button
+    private lateinit var continueButton: Button
     private lateinit var buttonFinishTest: Button
     private lateinit var cardFront: View
     private lateinit var cardBack: View
-    private lateinit var buttonLayout: View
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_test_knowledge)
+        setContentView(R.layout.activity_test_writing)
 
         roomHelper = RoomHelper(applicationContext)
         wordDao = roomHelper.wordDao
 
         val wordsJson = intent.getStringExtra("wordsJson")
         words = Gson().fromJson(wordsJson, object : TypeToken<MutableList<Word>>() {}.type)
+        words.shuffle()
 
         textWord = findViewById(R.id.textWord)
         textTranslation = findViewById(R.id.textTranslation)
-        buttonShowTranslation = findViewById(R.id.buttonShowTranslation)
-        buttonKnow = findViewById(R.id.buttonKnow)
-        buttonDontKnow = findViewById(R.id.buttonDontKnow)
+        editText = findViewById(R.id.editText)
         buttonFinishTest = findViewById(R.id.buttonFinishTest)
+        checkButton = findViewById(R.id.checkButton)
+        continueButton = findViewById(R.id.continueButton)
         cardFront = findViewById(R.id.cardFront)
         cardBack = findViewById(R.id.cardBack)
-        buttonLayout = findViewById(R.id.buttonLayout)
+
+        continueButton.visibility = View.GONE
 
         updateCard()
 
-        buttonShowTranslation.setOnClickListener {
-            showTranslation()
+        checkButton.setOnClickListener {
+            lifecycleScope.launch {
+                checkAnswer()
+            }
         }
 
-        buttonKnow.setOnClickListener {
-            nextWord(true)
-        }
-
-        buttonDontKnow.setOnClickListener {
-            nextWord(false)
+        continueButton.setOnClickListener {
+            nextWord()
         }
 
         buttonFinishTest.setOnClickListener {
@@ -77,13 +77,37 @@ class TestKnowledgeActivity : AppCompatActivity() {
         val word = words[currentIndex]
         textWord.text = word.nativeWord
         textTranslation.text = word.translation
-        buttonLayout.visibility = View.GONE
-        buttonShowTranslation.visibility = View.VISIBLE
         cardFront.visibility = View.VISIBLE
         cardBack.visibility = View.GONE
+        editText.text.clear()
     }
 
-    private fun showTranslation() {
+    private suspend fun checkAnswer() {
+        val word = words[currentIndex]
+
+        val userAnswer = editText.text.toString().trim().replace("\\s+".toRegex(), "")
+        val actualTranslation = word.translation.trim().replace("\\s+".toRegex(), "")
+
+        if (userAnswer.equals(actualTranslation, ignoreCase = true)) {
+            word.status++
+            if (word.status > 6) {
+                word.isLearned = true
+                word.status = 0
+            }
+            word.isMistaken = false
+            wordDao.updateWordById(word.id, word.nativeWord, word.translation, word.exampleNative, word.exampleTranslation, word.topicId, word.status, word.isLearned, word.isMistaken)
+            correctAnswersCount++
+            allAnswersCount++
+            cardBack.setBackgroundColor(resources.getColor(android.R.color.holo_green_light))
+        } else {
+            word.status--
+            if (word.status < 0) word.status = 0
+            word.isMistaken = true
+            wordDao.updateWordById(word.id, word.nativeWord, word.translation, word.exampleNative, word.exampleTranslation, word.topicId, word.status, word.isLearned, word.isMistaken)
+            allAnswersCount++
+            cardBack.setBackgroundColor(resources.getColor(android.R.color.holo_red_light))
+        }
+
         val animOut = AnimationUtils.loadAnimation(this, R.anim.card_flip_left_out)
         val animIn = AnimationUtils.loadAnimation(this, R.anim.card_flip_right_in)
 
@@ -91,29 +115,14 @@ class TestKnowledgeActivity : AppCompatActivity() {
         cardFront.postDelayed({
             cardFront.visibility = View.GONE
             cardBack.visibility = View.VISIBLE
-            buttonLayout.visibility = View.VISIBLE
-            buttonShowTranslation.visibility = View.GONE
+            editText.isEnabled = false
+            checkButton.visibility = View.GONE
+            continueButton.visibility = View.VISIBLE
             cardBack.startAnimation(animIn)
         }, animOut.duration)
     }
 
-    private fun nextWord(isKnown: Boolean) {
-        val word = words[currentIndex]
-
-        if (isKnown) {
-            word.status++
-            if (word.status > 6) {
-                word.isLearned = true
-                word.status = 0
-            }
-            correctAnswersCount++
-            allAnswersCount++
-        } else {
-            word.status--
-            if (word.status < 0) word.status = 0
-            allAnswersCount++
-        }
-
+    private fun nextWord() {
         if (currentIndex < words.size - 1) {
             currentIndex++
             val animOutLeft = AnimationUtils.loadAnimation(this, R.anim.slide_out_left)
@@ -122,6 +131,10 @@ class TestKnowledgeActivity : AppCompatActivity() {
             cardBack.startAnimation(animOutLeft)
             cardBack.postDelayed({
                 updateCard()
+                cardFront.setBackgroundColor(resources.getColor(android.R.color.white))
+                editText.isEnabled = true
+                checkButton.visibility = View.VISIBLE
+                continueButton.visibility = View.GONE
                 cardFront.startAnimation(animInRight)
             }, animOutLeft.duration)
         } else {
