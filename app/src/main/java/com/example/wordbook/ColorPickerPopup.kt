@@ -35,12 +35,12 @@ class ColorPickerPopup(context: Context, private val listener: OnColorSelectedLi
         )
 
         val colors = listOf(
-            0xFFDF433A.toInt(), // Red
-            0xFF3EE04C.toInt(), // Green
+            0xFFEB2828.toInt(),  // Red
+            0xFFDC880A.toInt(),  // Orange
+            0xFFE5CF06.toInt(),  // Yellow
+            0xFF42EA5D.toInt(),  // Green
             0xFF476EE1.toInt(),  // Blue
-            0xFFFFFFFF.toInt(),
-            0xFFFFFFFF.toInt(),
-            0xFFFFFFFF.toInt()
+            0xFFFFFFFF.toInt()  // White
         )
 
         colorViews.forEachIndexed { index, view ->

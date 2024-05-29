@@ -3,82 +3,73 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainMenuFragment"
-    android:padding="16dp">
+    tools:context=".MainMenuFragment">
 
-    <!-- Заголовок -->
     <TextView
-        android:id="@+id/titleTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:text="Выберите тест"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:paddingBottom="16dp"/>
+        android:id="@+id/test_start_title_text"
+        style="@style/TitleTextViewStyle"
+        android:text="Создание теста" />
 
-    <!-- Тип теста -->
+    <View
+        android:id="@+id/test_start_dividing_line"
+        style="@style/RoundedLineStyle"
+        android:layout_below="@id/test_start_title_text"
+        android:background="@drawable/rounded_recycler" />
+
     <TextView
         android:id="@+id/testTypeTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/titleTextView"
-        android:text="Тип теста"
-        android:textSize="18sp"
-        android:paddingBottom="8dp"/>
+        style="@style/SubtitleTestTextStyle"
+        android:layout_below="@id/test_start_dividing_line"
+        android:text="Тип теста" />
 
     <RadioGroup
         android:id="@+id/radioGroupTestType"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/testTypeTextView"
+        android:layout_marginStart="30dp"
         android:orientation="vertical">
 
         <RadioButton
             android:id="@+id/radioKnowWord"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Знаю ли я слово" />
+            style="@style/TestStartButtonStyle"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/circle_main_test_back"
+            android:buttonTint="@color/blueButton"
+            android:text="Знание перевода" />
 
         <RadioButton
             android:id="@+id/radioWriteWord"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Написать слово" />
+            style="@style/TestStartButtonStyle"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/circle_main_test_back"
+            android:buttonTint="@color/blueButton"
+            android:text="Правописание слова" />
+
     </RadioGroup>
 
-    <!-- Тема -->
     <TextView
         android:id="@+id/topicTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/SubtitleTestTextStyle"
         android:layout_below="@id/radioGroupTestType"
-        android:layout_marginTop="16dp"
-        android:text="Тема"
-        android:textSize="18sp"
-        android:paddingTop="16dp"
-        android:paddingBottom="8dp"/>
+        android:text="Тема" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewTopics"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_below="@id/topicTextView"
+        android:layout_height="match_parent"
         android:layout_above="@id/buttonStartTest"
+        android:layout_below="@id/topicTextView"
+        android:layout_marginStart='40dp'
+        android:layout_marginEnd='40dp'
+        android:layout_marginBottom='10dp'
+        android:background="@drawable/rounded_recycler"
         android:scrollbars="vertical" />
 
-    <!-- Кнопка начать тест -->
     <Button
         android:id="@+id/buttonStartTest"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginTop="16dp"
-        android:text="Начать тест"
-        android:padding="16dp"
-        android:textSize="16sp"
-        android:backgroundTint="#2999E5"
-        android:textColor="#FFFFFF"/>
+        style="@style/RegularButtonStyle"
+        android:layout_marginBottom="15dp"
+        android:text="Начать тест" />
 
 </RelativeLayout>
