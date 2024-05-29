@@ -22,7 +22,9 @@
     <ImageView
         android:id="@+id/edit_topic_icon"
         style="@style/UpperRightCornerButtonStyle"
-        android:layout_toEndOf="@id/topicTitle"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+
         android:src="@drawable/ic_baseline_edit_24" />
 
     <RadioGroup
