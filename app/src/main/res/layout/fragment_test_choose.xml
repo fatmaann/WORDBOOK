@@ -8,7 +8,7 @@
     <TextView
         android:id="@+id/test_start_title_text"
         style="@style/TitleTextViewStyle"
-        android:text="Создание теста" />
+        android:text="@string/test_start_title_text" />
 
     <View
         android:id="@+id/test_start_dividing_line"
@@ -20,7 +20,7 @@
         android:id="@+id/testTypeTextView"
         style="@style/SubtitleTestTextStyle"
         android:layout_below="@id/test_start_dividing_line"
-        android:text="Тип теста" />
+        android:text="@string/page_test_type_text" />
 
     <RadioGroup
         android:id="@+id/radioGroupTestType"
@@ -36,7 +36,7 @@
             android:layout_marginBottom="10dp"
             android:background="@drawable/circle_main_test_back"
             android:buttonTint="@color/blueButton"
-            android:text="Знание перевода" />
+            android:text="@string/button_know_test_type_text" />
 
         <RadioButton
             android:id="@+id/radioWriteWord"
@@ -44,7 +44,7 @@
             android:layout_marginBottom="20dp"
             android:background="@drawable/circle_main_test_back"
             android:buttonTint="@color/blueButton"
-            android:text="Правописание слова" />
+            android:text="@string/button_write_test_type_text" />
 
     </RadioGroup>
 
@@ -52,7 +52,7 @@
         android:id="@+id/topicTextView"
         style="@style/SubtitleTestTextStyle"
         android:layout_below="@id/radioGroupTestType"
-        android:text="Тема" />
+        android:text="@string/page_test_topic_name_text" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewTopics"
@@ -70,6 +70,6 @@
         android:id="@+id/buttonStartTest"
         style="@style/RegularButtonStyle"
         android:layout_marginBottom="15dp"
-        android:text="Начать тест" />
+        android:text="@string/button_start_test_text" />
 
 </RelativeLayout>

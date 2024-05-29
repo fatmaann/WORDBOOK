@@ -8,7 +8,7 @@
     <TextView
         android:id="@+id/word_title_text"
         style="@style/TitleTextViewStyle"
-        android:text="Новое слово" />
+        android:text="@string/new_word_title_text" />
 
     <View
         android:id="@+id/word_dividing_line"
@@ -19,27 +19,27 @@
         android:id="@+id/word_native"
         style="@style/EditTextStyle"
         android:background="@drawable/cyrcle_text_edit"
-        android:hint="Слово на родном языке" />
+        android:hint="@string/input_native_word_text" />
 
 
     <EditText
         android:id="@+id/word_translation"
         style="@style/EditTextStyle"
         android:background="@drawable/cyrcle_text_edit"
-        android:hint="Перевод" />
+        android:hint="@string/textTranslation_stub_text" />
 
     <EditText
         android:id="@+id/example_native"
         style="@style/EditTextStyle"
         android:background="@drawable/cyrcle_text_edit"
-        android:hint="Пример на родном языке" />
+        android:hint="@string/input_native_example_text" />
 
     <EditText
         android:id="@+id/example_translation"
         style="@style/EditTextStyle"
         android:layout_marginBottom="5dp"
         android:background="@drawable/cyrcle_text_edit"
-        android:hint="Перевод примера" />
+        android:hint="@string/input_translate_example_text" />
 
     <Spinner
         android:id="@+id/topic_spinner"
@@ -51,11 +51,11 @@
         style="@style/CheckBoxStyle"
         android:background="@drawable/cyrcle_text_edit"
         android:buttonTint="@color/blueButton"
-        android:text="Я знаю это слово" />
+        android:text="@string/button_learned_word_text" />
 
     <Button
         android:id="@+id/save_button"
         style="@style/RegularButtonStyle"
-        android:text="Добавить" />
+        android:text="@string/button_add_text" />
 
 </LinearLayout>

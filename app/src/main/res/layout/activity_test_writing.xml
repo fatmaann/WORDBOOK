@@ -9,7 +9,7 @@
         style="@style/TitleTextViewStyle"
         android:layout_centerHorizontal="true"
         android:fontFamily="@font/inter_bold"
-        android:text="Название темы" />
+        android:text="@string/topicName_stub_text" />
 
     <View
         android:id="@+id/dividing_line"
@@ -31,15 +31,15 @@
         <include
             android:id="@+id/cardFront"
             layout="@layout/card_front"
-            android:layout_width="250dp"
-            android:layout_height="170dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_gravity="center" />
 
         <include
             android:id="@+id/cardBack"
             layout="@layout/card_back"
-            android:layout_width="250dp"
-            android:layout_height="170dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:visibility="gone" />
 
@@ -47,11 +47,14 @@
 
     <EditText
         android:id="@+id/editText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/EditTextStyle"
         android:layout_below="@id/cardContainer"
-        android:layout_marginTop="16dp"
-        android:hint="Введите перевод"
+
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:background="@drawable/cyrcle_text_edit"
+        android:hint="@string/input_translate_text"
+
         android:inputType="text"
         android:maxLines="1"
         android:singleLine="true" />
@@ -60,19 +63,19 @@
         android:id="@+id/checkButton"
         style="@style/RegularButtonRelativeStyle"
         android:layout_below="@id/editText"
-        android:text="Проверить" />
+        android:text="@string/button_check_text" />
 
     <Button
         android:id="@+id/continueButton"
         style="@style/RegularButtonRelativeStyle"
         android:layout_below="@id/checkButton"
-        android:text="Продолжить" />
+        android:text="@string/button_continue_text" />
 
     <Button
         android:id="@+id/buttonFinishTest"
         style="@style/RegularButtonRelativeStyle"
         android:layout_below="@id/continueButton"
         android:backgroundTint="#EB2828"
-        android:text="Завершить тест" />
+        android:text="@string/button_finish_test_text" />
 
 </RelativeLayout>

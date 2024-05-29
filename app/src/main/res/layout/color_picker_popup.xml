@@ -2,9 +2,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:background="@drawable/cyrcle_text_edit"
     android:orientation="vertical"
-    android:padding="10dp"
-    android:background="@drawable/cyrcle_text_edit">
+    android:padding="10dp">
 
     <GridLayout
         android:id="@+id/colorGrid"
@@ -14,34 +14,34 @@
         android:rowCount="1">
 
         <View
+            android:id="@+id/colorRed"
             style="@style/LittleColorExampleStyle"
-            android:background="@drawable/color_example_drawable"
-            android:id="@+id/colorRed"/>
+            android:background="@drawable/color_example_drawable" />
 
         <View
+            android:id="@+id/colorGreen"
             style="@style/LittleColorExampleStyle"
-            android:background="@drawable/color_example_drawable"
-            android:id="@+id/colorGreen"/>
+            android:background="@drawable/color_example_drawable" />
 
         <View
+            android:id="@+id/colorBlue"
             style="@style/LittleColorExampleStyle"
-            android:background="@drawable/color_example_drawable"
-            android:id="@+id/colorBlue"/>
+            android:background="@drawable/color_example_drawable" />
 
         <View
+            android:id="@+id/colorRed1"
             style="@style/LittleColorExampleStyle"
-            android:background="@drawable/color_example_drawable"
-            android:id="@+id/colorRed1"/>
+            android:background="@drawable/color_example_drawable" />
 
         <View
+            android:id="@+id/colorGreen1"
             style="@style/LittleColorExampleStyle"
-            android:background="@drawable/color_example_drawable"
-            android:id="@+id/colorGreen1"/>
+            android:background="@drawable/color_example_drawable" />
 
         <View
+            android:id="@+id/colorBlue1"
             style="@style/LittleColorExampleStyle"
-            android:background="@drawable/color_example_drawable"
-            android:id="@+id/colorBlue1"/>
+            android:background="@drawable/color_example_drawable" />
 
     </GridLayout>
 </LinearLayout>

@@ -6,7 +6,7 @@
     <TextView
         android:id="@+id/topic_editor_title_text"
         style="@style/TitleTextViewStyle"
-        android:text="Редактор темы" />
+        android:text="@string/edit_topic_title_text" />
 
     <View
         android:id="@+id/topic_editor_dividing_line"
@@ -19,7 +19,7 @@
         style="@style/EditTextStyle"
         android:layout_below="@id/topic_editor_dividing_line"
         android:background="@drawable/cyrcle_text_edit"
-        android:hint="Название темы"
+        android:hint="@string/topicName_stub_text"
         android:inputType="text" />
 
     <LinearLayout
@@ -32,7 +32,7 @@
             android:id="@+id/color_choose_text"
             style="@style/ColorChooseTextStyle"
             android:background="@drawable/cyrcle_text_edit"
-            android:text="Цвет темы" />
+            android:text="@string/button_color_text" />
 
         <Button
             android:id="@+id/colorButton"
@@ -45,18 +45,18 @@
         android:id="@+id/save_button"
         style="@style/RegularButtonRelativeStyle"
         android:layout_below="@id/color_linear_layout"
-        android:text="Сохранить" />
+        android:text="@string/button_save_text" />
 
     <Button
         android:id="@+id/back_button"
         style="@style/RegularButtonRelativeStyle"
         android:layout_below="@id/save_button"
-        android:text="Назад" />
+        android:text="@string/button_go_back_text" />
 
     <Button
         android:id="@+id/delete_button"
         style="@style/RegularButtonRelativeStyle"
         android:layout_below="@id/back_button"
-        android:text="Удалить тему" />
+        android:text="@string/button_delete_topic_text" />
 
 </RelativeLayout>

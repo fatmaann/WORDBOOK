@@ -10,7 +10,7 @@
         android:id="@+id/title_text"
         style="@style/TitleTextViewStyle"
         android:fontFamily="@font/inter_bold"
-        android:text="Ваши темы" />
+        android:text="@string/all_topic_title_text" />
 
     <View
         android:id="@+id/dividing_line"
@@ -32,6 +32,6 @@
         android:id="@+id/add_button"
         style="@style/RegularButtonStyle"
         android:layout_marginBottom="15dp"
-        android:text="Создать тему" />
+        android:text="@string/button_add_topic_text" />
 
 </RelativeLayout>

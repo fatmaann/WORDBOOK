@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:buttonTint="@color/blueButton"
         android:paddingLeft="7dp"
-        android:text="Topic Name"
+        android:text="@string/topicName_stub_text"
         android:textSize="16sp" />
 
 </RelativeLayout>

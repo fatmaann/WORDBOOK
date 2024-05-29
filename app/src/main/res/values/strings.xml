@@ -1,15 +1,55 @@
 <resources>
     <string name="app_name">WORDBOOK</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_test">TestActivity</string>
-    <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
-
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
-    <!--    <string name="addWordSpinnerHint"><font size="15">Hint here!</font></string>-->
+
+    <string name="button_translate_text">Показать перевод</string>
+    <string name="button_finish_test_text">Завершить тест</string>
+    <string name="button_know_text">Знал</string>
+    <string name="button_not_know_text">Не знал</string>
+    <string name="button_check_text">Проверить</string>
+    <string name="button_continue_text">Продолжить</string>
+    <string name="button_color_text">Цвет темы</string>
+    <string name="button_save_text">Сохранить</string>
+    <string name="button_learned_word_text">Я знаю это слово</string>
+    <string name="button_add_text">Добавить</string>
+    <string name="button_go_back_text">Назад</string>
+    <string name="button_delete_topic_text">Удалить тему</string>
+    <string name="button_delete_word_text">Удалить слово</string>
+    <string name="button_add_topic_text">Создать тему</string>
+    <string name="button_know_test_type_text">Знание перевода</string>
+    <string name="button_write_test_type_text">Правописание слова</string>
+    <string name="button_start_test_text">Начать тест</string>
+
+    <string name="input_native_word_text">Слово на родном языке</string>
+    <string name="input_translate_text">Введите перевод</string>
+    <string name="input_native_example_text">Пример на родном языке</string>
+    <string name="input_translate_example_text">Перевод примера</string>
+    <string name="input_topic_name_text">Введите название темы</string>
+
+    <string name="all_topic_title_text">Ваши темы</string>
+    <string name="new_topic_title_text">Новая тема</string>
+    <string name="new_word_title_text">Новое слово</string>
+    <string name="edit_topic_title_text">Редактор темы</string>
+    <string name="edit_word_title_text">Редактор слова</string>
+    <string name="test_start_title_text">Создание теста</string>
+    <string name="test_finish_title_text">Результаты теста</string>
+
+    <string name="unknown_subtitle_text">Невыученные</string>
+    <string name="known_subtitle_text">Выученные</string>
+
+    <string name="page_test_type_text">Тип теста</string>
+    <string name="page_test_topic_name_text">Тема</string>
+    <string name="page_no_words_warning_text">Нет слов в данной теме</string>
+
+    <string name="topicName_stub_text">Название темы</string>
+    <string name="textTranslation_stub_text">Перевод</string>
+    <string name="textExampleBack_stub_text">Пример</string>
+    <string name="textWord_stub_text">Слово</string>
 </resources>

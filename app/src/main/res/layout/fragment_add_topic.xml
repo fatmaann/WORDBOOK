@@ -8,7 +8,7 @@
     <TextView
         android:id="@+id/topic_title_text"
         style="@style/TitleTextViewStyle"
-        android:text="Новая тема" />
+        android:text="@string/new_topic_title_text" />
 
     <View
         android:id="@+id/topic_dividing_line"
@@ -19,7 +19,7 @@
         android:id="@+id/editText"
         style="@style/EditTextStyle"
         android:background="@drawable/cyrcle_text_edit"
-        android:hint="Введите название темы"
+        android:hint="@string/input_topic_name_text"
         android:inputType="text" />
 
     <LinearLayout
@@ -30,7 +30,7 @@
             android:id="@+id/color_choose_text"
             style="@style/ColorChooseTextStyle"
             android:background="@drawable/cyrcle_text_edit"
-            android:text="Цвет темы" />
+            android:text="@string/button_color_text" />
 
         <Button
             android:id="@+id/colorButton"
@@ -42,6 +42,6 @@
     <Button
         android:id="@+id/saveButton"
         style="@style/RegularButtonStyle"
-        android:text="Сохранить" />
+        android:text="@string/button_save_text" />
 
 </LinearLayout>

@@ -9,7 +9,7 @@
         style="@style/TitleTextViewStyle"
         android:layout_centerHorizontal="true"
         android:fontFamily="@font/inter_bold"
-        android:text="Название темы" />
+        android:text="@string/topicName_stub_text" />
 
     <View
         android:id="@+id/dividing_line"
@@ -47,14 +47,14 @@
         android:id="@+id/buttonShowTranslation"
         style="@style/RegularButtonRelativeStyle"
         android:layout_below="@id/buttonLayout"
-        android:text="Показать перевод" />
+        android:text="@string/button_translate_text" />
 
     <Button
         android:id="@+id/buttonFinishTest"
         style="@style/RegularButtonRelativeStyle"
         android:layout_below="@id/buttonShowTranslation"
         android:backgroundTint="#EB2828"
-        android:text="Завершить тест" />
+        android:text="@string/button_finish_test_text" />
 
     <LinearLayout
         android:id="@+id/buttonLayout"
@@ -74,7 +74,7 @@
             android:layout_marginEnd="2dp"
             android:layout_weight="1"
             android:backgroundTint="#49BD63"
-            android:text="Знал"
+            android:text="@string/button_know_text"
             android:textStyle="bold" />
 
         <Button
@@ -84,7 +84,7 @@
             android:layout_marginStart="2dp"
             android:layout_weight="1"
             android:backgroundTint="#D37926"
-            android:text="Не знал"
+            android:text="@string/button_not_know_text"
             android:textStyle="bold" />
 
     </LinearLayout>

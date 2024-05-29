@@ -7,7 +7,7 @@
     <TextView
         android:id="@+id/word_editor_title_text"
         style="@style/TitleTextViewStyle"
-        android:text="Редактор слова" />
+        android:text="@string/edit_word_title_text" />
 
     <View
         android:id="@+id/word_editor_dividing_line"
@@ -18,25 +18,25 @@
         android:id="@+id/edit_native_word"
         style="@style/EditTextStyle"
         android:background="@drawable/cyrcle_text_edit"
-        android:hint="Слово на родном языке" />
+        android:hint="@string/input_native_word_text" />
 
     <EditText
         android:id="@+id/edit_translation"
         style="@style/EditTextStyle"
         android:background="@drawable/cyrcle_text_edit"
-        android:hint="Перевод" />
+        android:hint="@string/textTranslation_stub_text" />
 
     <EditText
         android:id="@+id/edit_example_native"
         style="@style/EditTextStyle"
         android:background="@drawable/cyrcle_text_edit"
-        android:hint="Пример на родном языке" />
+        android:hint="@string/input_native_example_text" />
 
     <EditText
         android:id="@+id/edit_example_translation"
         style="@style/EditTextStyle"
         android:background="@drawable/cyrcle_text_edit"
-        android:hint="Перевод примера" />
+        android:hint="@string/input_translate_example_text" />
 
     <Spinner
         android:id="@+id/select_topic_spinner"
@@ -48,23 +48,23 @@
         style="@style/CheckBoxStyle"
         android:background="@drawable/cyrcle_text_edit"
         android:buttonTint="@color/blueButton"
-        android:text="Я знаю это слово" />
+        android:text="@string/button_learned_word_text" />
 
     <Button
         android:id="@+id/save_button"
         style="@style/RegularButtonStyle"
         android:layout_marginBottom="5dp"
-        android:text="Сохранить" />
+        android:text="@string/button_save_text" />
 
     <Button
         android:id="@+id/delete_button"
         style="@style/RegularButtonStyle"
         android:layout_marginBottom="5dp"
-        android:text="Удалить" />
+        android:text="@string/button_delete_word_text" />
 
     <Button
         android:id="@+id/back_button"
         style="@style/RegularButtonStyle"
-        android:text="Назад" />
+        android:text="@string/button_go_back_text" />
 
 </LinearLayout>

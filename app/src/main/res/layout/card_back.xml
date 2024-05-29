@@ -11,7 +11,7 @@
         android:id="@+id/textTranslation"
         style="@style/KnowTestTextCardStyle"
         android:background="@drawable/circle_main_test_big_back"
-        android:text="Перевод"
+        android:text="@string/textTranslation_stub_text"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
@@ -19,7 +19,7 @@
         style="@style/KnowTestTextCardStyle"
         android:layout_marginBottom="0dp"
         android:background="@drawable/circle_main_test_big_back"
-        android:text="Пример"
+        android:text="@string/textExampleBack_stub_text"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
 </LinearLayout>

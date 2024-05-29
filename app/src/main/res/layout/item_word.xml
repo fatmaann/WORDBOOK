@@ -3,41 +3,41 @@
     android:layout_width="match_parent"
     android:layout_height="140dp"
     android:layout_margin="8dp"
-    android:orientation="vertical"
-    android:padding="16dp"
     android:background="@drawable/rounded_corner"
-    android:elevation="5dp">
+    android:elevation="5dp"
+    android:orientation="vertical"
+    android:padding="16dp">
 
     <TextView
         android:id="@+id/native_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Native Word"
-        android:textSize="18sp"
-        android:textColor="@android:color/black" />
+        android:text="@string/input_native_word_text"
+        android:textColor="@android:color/black"
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/translation_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Translation"
-        android:textSize="16sp"
-        android:textColor="@android:color/darker_gray" />
+        android:text="@string/textTranslation_stub_text"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="16sp" />
 
     <TextView
         android:id="@+id/example_native_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Example in Native"
-        android:textSize="14sp"
+        android:paddingTop="8dp"
+        android:text="@string/input_native_example_text"
         android:textColor="@android:color/black"
-        android:paddingTop="8dp" />
+        android:textSize="14sp" />
 
     <TextView
         android:id="@+id/example_translation_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Example Translation"
-        android:textSize="14sp"
-        android:textColor="@android:color/darker_gray" />
+        android:text="@string/input_translate_example_text"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="14sp" />
 </LinearLayout>
