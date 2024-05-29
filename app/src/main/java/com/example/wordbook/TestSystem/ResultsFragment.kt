@@ -31,7 +31,8 @@ class ResultsFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_results, container, false)
         val correctAnswers = arguments?.getInt("correctAnswers") ?: 0
         val totalQuestions = arguments?.getInt("totalQuestions") ?: 0
-        val percentage = if (totalQuestions != 0) (correctAnswers.toFloat() / totalQuestions * 100).toInt() else 0
+        val percentage =
+            if (totalQuestions != 0) (correctAnswers.toFloat() / totalQuestions * 100).toInt() else 0
 
 
         view.findViewById<TextView>(R.id.textCorrectAnswers).text = "Верные ответы: $correctAnswers"

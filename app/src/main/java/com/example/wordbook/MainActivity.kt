@@ -22,14 +22,17 @@ class MainActivity : AppCompatActivity() {
                     replaceFragment(MainMenuFragment(), R.id.menu_item_home)
                     true
                 }
+
                 R.id.menu_item_add -> {
                     replaceFragment(AddWordFragment(), R.id.menu_item_add)
                     true
                 }
+
                 R.id.menu_item_test -> {
                     replaceFragment(TestChooseFragment(), R.id.menu_item_test)
                     true
                 }
+
                 else -> false
             }
         }

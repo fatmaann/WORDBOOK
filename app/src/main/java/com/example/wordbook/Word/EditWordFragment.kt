@@ -66,14 +66,26 @@ class EditWordFragment : Fragment() {
                     val topics = roomHelper.topicDao.getAllTopics()
                     val filteredTopics = topics.filter { it.id != 1 && it.id != 2 }
                     val topicPairs = filteredTopics.map { it.name to it.id }
-                    val adapter = object : ArrayAdapter<Pair<String, Int>>(requireContext(), android.R.layout.simple_spinner_item, topicPairs) {
-                        override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
+                    val adapter = object : ArrayAdapter<Pair<String, Int>>(
+                        requireContext(),
+                        android.R.layout.simple_spinner_item,
+                        topicPairs
+                    ) {
+                        override fun getView(
+                            position: Int,
+                            convertView: View?,
+                            parent: ViewGroup
+                        ): View {
                             val view = super.getView(position, convertView, parent)
                             (view as TextView).text = getItem(position)?.first
                             return view
                         }
 
-                        override fun getDropDownView(position: Int, convertView: View?, parent: ViewGroup): View {
+                        override fun getDropDownView(
+                            position: Int,
+                            convertView: View?,
+                            parent: ViewGroup
+                        ): View {
                             val view = super.getDropDownView(position, convertView, parent)
                             (view as TextView).text = getItem(position)?.first
                             return view
@@ -94,7 +106,11 @@ class EditWordFragment : Fragment() {
             val exampleTranslation = editExampleTranslation.text.toString()
 
             if (selectTopicSpinner.adapter == null || selectTopicSpinner.adapter.isEmpty) {
-                Toast.makeText(requireContext(), "Пожалуйста, создайте новую тему", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    requireContext(),
+                    "Пожалуйста, создайте новую тему",
+                    Toast.LENGTH_SHORT
+                ).show()
             } else {
                 val selectedTopicPair = selectTopicSpinner.selectedItem as Pair<String, Int>
                 val topicId = selectedTopicPair.second
@@ -104,11 +120,25 @@ class EditWordFragment : Fragment() {
 
                 if (nativeWord.isNotBlank() && translation.isNotBlank()) {
                     lifecycleScope.launch {
-                        roomHelper.wordDao.updateWordById(wordId, nativeWord, translation, exampleNative, exampleTranslation, topicId, status, isLearned, isMistaken)
+                        roomHelper.wordDao.updateWordById(
+                            wordId,
+                            nativeWord,
+                            translation,
+                            exampleNative,
+                            exampleTranslation,
+                            topicId,
+                            status,
+                            isLearned,
+                            isMistaken
+                        )
                         parentFragmentManager.popBackStack()
                     }
                 } else {
-                    Toast.makeText(requireContext(), "Пожалуйста, заполните обязательные поля", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        requireContext(),
+                        "Пожалуйста, заполните обязательные поля",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             }
         }

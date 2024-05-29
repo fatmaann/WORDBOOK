@@ -117,7 +117,17 @@ class TestWritingActivity : AppCompatActivity() {
                 word.status = 0
             }
             word.isMistaken = false
-            wordDao.updateWordById(word.id, word.nativeWord, word.translation, word.exampleNative, word.exampleTranslation, word.topicId, word.status, word.isLearned, word.isMistaken)
+            wordDao.updateWordById(
+                word.id,
+                word.nativeWord,
+                word.translation,
+                word.exampleNative,
+                word.exampleTranslation,
+                word.topicId,
+                word.status,
+                word.isLearned,
+                word.isMistaken
+            )
             correctAnswersCount++
             allAnswersCount++
             cardBack.setBackgroundResource(R.drawable.card_background_green)
@@ -125,7 +135,17 @@ class TestWritingActivity : AppCompatActivity() {
             word.status--
             if (word.status < 0) word.status = 0
             word.isMistaken = true
-            wordDao.updateWordById(word.id, word.nativeWord, word.translation, word.exampleNative, word.exampleTranslation, word.topicId, word.status, word.isLearned, word.isMistaken)
+            wordDao.updateWordById(
+                word.id,
+                word.nativeWord,
+                word.translation,
+                word.exampleNative,
+                word.exampleTranslation,
+                word.topicId,
+                word.status,
+                word.isLearned,
+                word.isMistaken
+            )
             allAnswersCount++
             cardBack.setBackgroundResource(R.drawable.card_background_red)
         }

@@ -68,7 +68,8 @@ class WordListFragment : Fragment() {
                     radioGroup.visibility = View.VISIBLE
 
                     val radioButtonLearned: RadioButton = view.findViewById(R.id.radioButtonLearned)
-                    val radioButtonUnlearned: RadioButton = view.findViewById(R.id.radioButtonUnlearned)
+                    val radioButtonUnlearned: RadioButton =
+                        view.findViewById(R.id.radioButtonUnlearned)
 
                     fun updateButtonStyles() {
                         if (isCheckedLearned) {

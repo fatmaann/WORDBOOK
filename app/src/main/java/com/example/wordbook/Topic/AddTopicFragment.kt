@@ -38,22 +38,22 @@ class AddTopicFragment : Fragment() {
         colorButton = view.findViewById(R.id.colorButton)
 
         colorButton.setOnClickListener {
-            val popup = ColorPickerPopup(requireContext(), object : ColorPickerPopup.OnColorSelectedListener {
-                override fun onColorSelected(color: Int) {
-                    if (color == Color.TRANSPARENT) {
-                        selectedColor = Color.WHITE
+            val popup = ColorPickerPopup(
+                requireContext(),
+                object : ColorPickerPopup.OnColorSelectedListener {
+                    override fun onColorSelected(color: Int) {
+                        if (color == Color.TRANSPARENT) {
+                            selectedColor = Color.WHITE
+                        } else {
+                            selectedColor = color
+                        }
+                        if (color == Color.WHITE) {
+                            colorButton.setBackgroundColor(Color.TRANSPARENT)
+                        } else {
+                            colorButton.setBackgroundColor(color)
+                        }
                     }
-                    else {
-                        selectedColor = color
-                    }
-                    if (color == Color.WHITE) {
-                        colorButton.setBackgroundColor(Color.TRANSPARENT)
-                    }
-                    else {
-                        colorButton.setBackgroundColor(color)
-                    }
-                }
-            })
+                })
             popup.show(it)
         }
 

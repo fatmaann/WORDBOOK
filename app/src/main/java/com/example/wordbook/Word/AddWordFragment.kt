@@ -42,14 +42,22 @@ class AddWordFragment : Fragment() {
             val topics = roomHelper.topicDao.getAllTopics()
             val filteredTopics = topics.filter { it.id != 1 && it.id != 2 }
             val topicPairs = filteredTopics.map { it.name to it.id }
-            val adapter = object : ArrayAdapter<Pair<String, Int>>(requireContext(), android.R.layout.simple_spinner_item, topicPairs) {
+            val adapter = object : ArrayAdapter<Pair<String, Int>>(
+                requireContext(),
+                android.R.layout.simple_spinner_item,
+                topicPairs
+            ) {
                 override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
                     val view = super.getView(position, convertView, parent)
                     (view as TextView).text = getItem(position)?.first
                     return view
                 }
 
-                override fun getDropDownView(position: Int, convertView: View?, parent: ViewGroup): View {
+                override fun getDropDownView(
+                    position: Int,
+                    convertView: View?,
+                    parent: ViewGroup
+                ): View {
                     val view = super.getDropDownView(position, convertView, parent)
                     (view as TextView).text = getItem(position)?.first
                     return view
@@ -61,7 +69,11 @@ class AddWordFragment : Fragment() {
 
         saveButton.setOnClickListener {
             if (topicSpinner.adapter == null || topicSpinner.adapter.isEmpty) {
-                Toast.makeText(requireContext(), "Пожалуйста, создайте новую тему", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    requireContext(),
+                    "Пожалуйста, создайте новую тему",
+                    Toast.LENGTH_SHORT
+                ).show()
             } else {
                 val selectedTopicPair = topicSpinner.selectedItem as Pair<String, Int>
                 val nativeWord = wordNative.text.toString()
@@ -71,9 +83,17 @@ class AddWordFragment : Fragment() {
                 val isLearned = learnedCheckBox.isChecked
 
                 if (nativeWord.length > 40 || translation.length > 40 || exampleNative.length > 40 || exampleTranslation.length > 40) {
-                    Toast.makeText(requireContext(), "Ни одно из полей не должно превышать 40 символов", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        requireContext(),
+                        "Ни одно из полей не должно превышать 40 символов",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 } else if (nativeWord.isEmpty() || translation.isEmpty()) {
-                    Toast.makeText(requireContext(), "Слова на иностранном и родном языках не могут быть пустыми", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        requireContext(),
+                        "Слова на иностранном и родном языках не могут быть пустыми",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 } else {
                     val word = Word(
                         nativeWord = nativeWord,

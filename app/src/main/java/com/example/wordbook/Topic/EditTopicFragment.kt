@@ -48,8 +48,7 @@ class EditTopicFragment : Fragment() {
                 selectedColor = topic.color
                 if (selectedColor == Color.WHITE) {
                     selectedColorForButton = Color.TRANSPARENT
-                }
-                else {
+                } else {
                     selectedColorForButton = selectedColor
                 }
                 updateColorButton()
@@ -62,23 +61,23 @@ class EditTopicFragment : Fragment() {
         }
 
         selectColorButton.setOnClickListener {
-            val popup = ColorPickerPopup(requireContext(), object : ColorPickerPopup.OnColorSelectedListener {
-                override fun onColorSelected(color: Int) {
-                    if (color == Color.TRANSPARENT) {
-                        selectedColor = Color.WHITE
+            val popup = ColorPickerPopup(
+                requireContext(),
+                object : ColorPickerPopup.OnColorSelectedListener {
+                    override fun onColorSelected(color: Int) {
+                        if (color == Color.TRANSPARENT) {
+                            selectedColor = Color.WHITE
+                        } else {
+                            selectedColor = color
+                        }
+                        if (color == Color.WHITE) {
+                            selectedColorForButton = Color.TRANSPARENT
+                        } else {
+                            selectedColorForButton = color
+                        }
+                        updateColorButton()
                     }
-                    else {
-                        selectedColor = color
-                    }
-                    if (color == Color.WHITE) {
-                        selectedColorForButton = Color.TRANSPARENT
-                    }
-                    else {
-                        selectedColorForButton = color
-                    }
-                    updateColorButton()
-                }
-            })
+                })
             popup.show(it)
         }
 

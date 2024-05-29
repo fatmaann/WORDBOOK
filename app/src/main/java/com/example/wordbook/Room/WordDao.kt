@@ -12,7 +12,17 @@ interface WordDao {
     suspend fun deleteWordById(wordId: Int)
 
     @Query("UPDATE words SET nativeWord = :nativeWord, translation = :translation, exampleNative = :exampleNative, exampleTranslation = :exampleTranslation, topicId = :topicId, status = :status, isLearned = :isLearned, isMistaken = :isMistaken WHERE id = :wordId")
-    suspend fun updateWordById(wordId: Int, nativeWord: String, translation: String, exampleNative: String, exampleTranslation: String, topicId: Int, status: Int, isLearned: Boolean, isMistaken: Boolean)
+    suspend fun updateWordById(
+        wordId: Int,
+        nativeWord: String,
+        translation: String,
+        exampleNative: String,
+        exampleTranslation: String,
+        topicId: Int,
+        status: Int,
+        isLearned: Boolean,
+        isMistaken: Boolean
+    )
 
     @Query("SELECT * FROM words WHERE topicId = :topicId")
     suspend fun getWordsForTopic(topicId: Int): MutableList<Word>

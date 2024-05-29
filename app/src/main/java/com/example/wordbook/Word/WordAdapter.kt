@@ -9,7 +9,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.wordbook.R
 import com.example.wordbook.Word
 
-class WordAdapter(private var words: List<Word>, private val onItemClick: (Word) -> Unit) : RecyclerView.Adapter<WordAdapter.WordViewHolder>() {
+class WordAdapter(private var words: List<Word>, private val onItemClick: (Word) -> Unit) :
+    RecyclerView.Adapter<WordAdapter.WordViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WordViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_word, parent, false)
@@ -33,8 +34,10 @@ class WordAdapter(private var words: List<Word>, private val onItemClick: (Word)
     class WordViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val nativeTextView: TextView = itemView.findViewById(R.id.native_text)
         private val translationTextView: TextView = itemView.findViewById(R.id.translation_text)
-        private val exampleNativeTextView: TextView = itemView.findViewById(R.id.example_native_text)
-        private val exampleTranslationTextView: TextView = itemView.findViewById(R.id.example_translation_text)
+        private val exampleNativeTextView: TextView =
+            itemView.findViewById(R.id.example_native_text)
+        private val exampleTranslationTextView: TextView =
+            itemView.findViewById(R.id.example_translation_text)
 
         fun bind(word: Word, onItemClick: (Word) -> Unit) {
             nativeTextView.text = word.nativeWord
