@@ -86,11 +86,18 @@ class EditTopicFragment : Fragment() {
             lifecycleScope.launch {
                 val topic = Topic(id = topicId, name = newName, color = selectedColor)
                 roomHelper.topicDao.update(topic)
+
+                val activity = context as MainActivity
+                MainActivity.setAllButtonsGrey(activity.bottomNavigationView)
+
                 parentFragmentManager.popBackStack()
             }
         }
 
         backButton.setOnClickListener {
+            val activity = context as MainActivity
+            MainActivity.setAllButtonsGrey(activity.bottomNavigationView)
+
             parentFragmentManager.popBackStack()
         }
 
@@ -115,6 +122,10 @@ class EditTopicFragment : Fragment() {
                     roomHelper.wordDao.deleteWordsForTopic(topicId)
                     roomHelper.topicDao.deleteTopic(topicId)
                     Toast.makeText(requireContext(), "Тема удалена", Toast.LENGTH_SHORT).show()
+
+                    val activity = context as MainActivity
+                    MainActivity.setAllButtonsGrey(activity.bottomNavigationView)
+
                     parentFragmentManager.popBackStack()
                     parentFragmentManager.popBackStack()
                     parentFragmentManager.beginTransaction()

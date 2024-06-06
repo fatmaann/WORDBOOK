@@ -20,7 +20,8 @@
         android:layout_below="@id/topic_editor_dividing_line"
         android:background="@drawable/cyrcle_text_edit"
         android:hint="@string/topicName_stub_text"
-        android:inputType="text" />
+        android:inputType="text"
+        android:singleLine="true" />
 
     <LinearLayout
         android:id="@+id/color_linear_layout"

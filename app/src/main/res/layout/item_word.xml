@@ -9,35 +9,35 @@
     android:padding="16dp">
 
     <TextView
-        android:id="@+id/native_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/input_native_word_text"
-        android:textColor="@android:color/black"
-        android:textSize="18sp" />
-
-    <TextView
         android:id="@+id/translation_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/textTranslation_stub_text"
-        android:textColor="@android:color/darker_gray"
-        android:textSize="16sp" />
+        android:textColor="@android:color/black"
+        android:textSize="18sp" />
 
     <TextView
-        android:id="@+id/example_native_text"
+        android:id="@+id/native_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingTop="8dp"
-        android:text="@string/input_native_example_text"
-        android:textColor="@android:color/black"
-        android:textSize="14sp" />
+        android:text="@string/input_native_word_text"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/example_translation_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/input_translate_example_text"
+        android:textColor="@android:color/black"
+        android:textSize="14sp"
+        android:paddingTop="8dp"/>
+
+    <TextView
+        android:id="@+id/example_native_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/input_native_example_text"
         android:textColor="@android:color/darker_gray"
         android:textSize="14sp" />
 </LinearLayout>

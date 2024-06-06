@@ -15,28 +15,32 @@
         android:background="@drawable/rounded_recycler" />
 
     <EditText
-        android:id="@+id/edit_native_word"
-        style="@style/EditTextStyle"
-        android:background="@drawable/cyrcle_text_edit"
-        android:hint="@string/input_native_word_text" />
-
-    <EditText
         android:id="@+id/edit_translation"
         style="@style/EditTextStyle"
         android:background="@drawable/cyrcle_text_edit"
-        android:hint="@string/textTranslation_stub_text" />
+        android:hint="@string/textTranslation_stub_text"
+        android:singleLine="true" />
 
     <EditText
-        android:id="@+id/edit_example_native"
+        android:id="@+id/edit_native_word"
         style="@style/EditTextStyle"
         android:background="@drawable/cyrcle_text_edit"
-        android:hint="@string/input_native_example_text" />
+        android:hint="@string/input_native_word_text"
+        android:singleLine="true" />
 
     <EditText
         android:id="@+id/edit_example_translation"
         style="@style/EditTextStyle"
         android:background="@drawable/cyrcle_text_edit"
-        android:hint="@string/input_translate_example_text" />
+        android:hint="@string/input_translate_example_text"
+        android:singleLine="true" />
+
+    <EditText
+        android:id="@+id/edit_example_native"
+        style="@style/EditTextStyle"
+        android:background="@drawable/cyrcle_text_edit"
+        android:hint="@string/input_native_example_text"
+        android:singleLine="true" />
 
     <Spinner
         android:id="@+id/select_topic_spinner"

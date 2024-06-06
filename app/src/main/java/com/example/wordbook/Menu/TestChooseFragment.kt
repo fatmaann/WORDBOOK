@@ -5,10 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.RadioButton
-import android.widget.RadioGroup
-import android.widget.Toast
+import android.widget.*
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -37,10 +34,31 @@ class TestChooseFragment : Fragment() {
 
         val recyclerViewTopics: RecyclerView = view.findViewById(R.id.recyclerViewTopics)
         recyclerViewTopics.layoutManager = LinearLayoutManager(context)
+        recyclerViewTopics.edgeEffectFactory = object : RecyclerView.EdgeEffectFactory() {
+            override fun createEdgeEffect(view: RecyclerView, direction: Int): EdgeEffect {
+                return object : EdgeEffect(view.context) {
+                    override fun onPull(deltaDistance: Float, displacement: Float) {
+                        // Do nothing
+                    }
+
+                    override fun onRelease() {
+                        // Do nothing
+                    }
+
+                    override fun onAbsorb(velocity: Int) {
+                        // Do nothing
+                    }
+
+                    override fun onPull(deltaDistance: Float) {
+                        // Do nothing
+                    }
+                }
+            }
+        }
 
         lifecycleScope.launch {
             val topicsFromDb = roomHelper.topicDao.getAllTopics()
-            val topics = mutableListOf(TestTopicItem(-1, "Все темы (невыученные)"))
+            val topics = mutableListOf(TestTopicItem(-1, "Невыученные слова"))
             topics.addAll(topicsFromDb.map { TestTopicItem(it.id, it.name) })
 
             adapter = TestTopicAdapter(topics)

@@ -1,7 +1,7 @@
 package com.example.wordbook
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -51,6 +51,14 @@ class MainActivity : AppCompatActivity() {
             for (i in 0 until 4) {
                 bottomNavigationView.menu.getItem(i).isChecked = false
             }
+        }
+
+        fun setButtonBlue(indexButton: Int, bottomNavigationView: BottomNavigationView) {
+            for (i in 0 until 4) {
+                bottomNavigationView.menu.getItem(i).isChecked = false
+            }
+
+            bottomNavigationView.menu.getItem(indexButton).isChecked = true
         }
     }
 

@@ -131,6 +131,10 @@ class EditWordFragment : Fragment() {
                             isLearned,
                             isMistaken
                         )
+
+                        val activity = context as MainActivity
+                        MainActivity.setAllButtonsGrey(activity.bottomNavigationView)
+
                         parentFragmentManager.popBackStack()
                     }
                 } else {
@@ -146,11 +150,16 @@ class EditWordFragment : Fragment() {
         deleteButton.setOnClickListener {
             lifecycleScope.launch {
                 roomHelper.wordDao.deleteWordById(wordId)
+                val activity = context as MainActivity
+                MainActivity.setAllButtonsGrey(activity.bottomNavigationView)
                 parentFragmentManager.popBackStack()
             }
         }
 
         backButton.setOnClickListener {
+            val activity = context as MainActivity
+            MainActivity.setAllButtonsGrey(activity.bottomNavigationView)
+
             parentFragmentManager.popBackStack()
         }
     }

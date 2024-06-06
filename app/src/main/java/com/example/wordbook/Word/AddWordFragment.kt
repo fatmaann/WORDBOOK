@@ -106,6 +106,8 @@ class AddWordFragment : Fragment() {
                     lifecycleScope.launch {
                         roomHelper.wordDao.insert(word)
                         clearFields()
+                        val activity = context as MainActivity
+                        MainActivity.setAllButtonsGrey(activity.bottomNavigationView)
                         openWordListFragment(selectedTopicPair.second)
                     }
                 }

@@ -131,6 +131,7 @@
         <item name="android:textAppearance">@style/TextAppearance.AppCompat.Medium</item>
         <item name="android:background">?android:attr/selectableItemBackground</item>
         <item name="colorControlHighlight">@android:color/transparent</item>
+        <item name="android:gravity">center</item>
     </style>
 
     <style name="UpperRightCornerButtonStyle">
@@ -193,7 +194,7 @@
     <style name="KnowTestTextCardStyle">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginBottom">20dp</item>
+        <item name="android:layout_marginTop">20dp</item>
         <item name="android:gravity">center</item>
         <item name="android:padding">4dp</item>
         <item name="android:textSize">18sp</item>

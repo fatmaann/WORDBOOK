@@ -72,6 +72,9 @@ class AddTopicFragment : Fragment() {
                     Toast.LENGTH_SHORT
                 ).show()
             } else {
+                val activity = context as MainActivity
+                MainActivity.setButtonBlue(0, activity.bottomNavigationView)
+
                 val topic = Topic(name = topicName, color = selectedColor)
                 listener?.onTopicSaved(topic)
                 requireActivity().supportFragmentManager.popBackStack()

@@ -16,30 +16,33 @@
         android:background="@drawable/rounded_recycler" />
 
     <EditText
-        android:id="@+id/word_native"
-        style="@style/EditTextStyle"
-        android:background="@drawable/cyrcle_text_edit"
-        android:hint="@string/input_native_word_text" />
-
-
-    <EditText
         android:id="@+id/word_translation"
         style="@style/EditTextStyle"
         android:background="@drawable/cyrcle_text_edit"
-        android:hint="@string/textTranslation_stub_text" />
+        android:hint="@string/textTranslation_stub_text"
+        android:singleLine="true" />
+
+    <EditText
+        android:id="@+id/word_native"
+        style="@style/EditTextStyle"
+        android:background="@drawable/cyrcle_text_edit"
+        android:hint="@string/input_native_word_text"
+        android:singleLine="true" />
+
+    <EditText
+        android:id="@+id/example_translation"
+        style="@style/EditTextStyle"
+        android:background="@drawable/cyrcle_text_edit"
+        android:hint="@string/input_translate_example_text"
+        android:singleLine="true" />
 
     <EditText
         android:id="@+id/example_native"
         style="@style/EditTextStyle"
         android:background="@drawable/cyrcle_text_edit"
-        android:hint="@string/input_native_example_text" />
-
-    <EditText
-        android:id="@+id/example_translation"
-        style="@style/EditTextStyle"
-        android:layout_marginBottom="5dp"
-        android:background="@drawable/cyrcle_text_edit"
-        android:hint="@string/input_translate_example_text" />
+        android:hint="@string/input_native_example_text"
+        android:singleLine="true"
+        android:layout_marginBottom="5dp"/>
 
     <Spinner
         android:id="@+id/topic_spinner"
