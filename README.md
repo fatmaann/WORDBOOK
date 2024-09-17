@@ -8,7 +8,7 @@
 
 ## Авторы:
 
-**Дмитрий Никитин** *(GitHub: [Scottish-esquire](https://github.com/Scottish-esquire))* & **Соловьев Степан** *(GitHub: [fatmaann](https://github.com/fatmaann))*
+**Дмитрий Никитин** *(GitHub: [DimitrisNikis](https://github.com/DimitrisNikis))* & **Соловьев Степан** *(GitHub: [fatmaann](https://github.com/fatmaann))*
 
 ## Ссылка для установки:
 
