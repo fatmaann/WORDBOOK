@@ -10,6 +10,6 @@
 
 **Дмитрий Никитин** *(GitHub: [Scottish-esquire](https://github.com/Scottish-esquire))* & **Соловьев Степан** *(GitHub: [fatmaann](https://github.com/fatmaann))*
 
-## Сслыка для установки:
+## Ссылка для установки:
 
 [Install apk](https://disk.yandex.ru/d/OfGgIQQxKc2zaw)
