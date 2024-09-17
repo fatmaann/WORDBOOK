@@ -1,11 +1,15 @@
-### The WORDBOOK Android app
+# Android приложение WORDBOOK   [![en](https://img.shields.io/badge/lang-en-red.svg)](https://github.com/fatmaann/WORDBOOK/blob/master/README.en.md)
 
-Is designed to help people learn foreign languages. This app serves as a comprehensive dictionary and includes a testing system to assess users' progress in learning new words. The interactive nature of the app ensures an engaging and effective learning experience, making language acquisition both fun and efficient.
+Приложение создано для того, чтобы сделать изучение иностранных языков простым и увлекательным.<br>
+Оно не только выполняет роль универсального словаря, но и предлагает встроенную систему тестирования для оценки вашего прогресса в освоении новых слов.
+Благодаря интерактивным элементам, обучение становится более эффективным и захватывающим, помогая вам достигать ваших языковых целей с удовольствием.<br>
 
-##### Authors:
+<b>Android, Mobile app, Figma, SQLite, Room</b>
 
-**Dmitrii Nikitin D.** *(GitHub: [Scottish-esquire](https://github.com/Scottish-esquire))* & **Stepan Solovev G.** *(GitHub: [fatmaann](https://github.com/fatmaann))*
+## Авторы:
 
-##### WORDBOOK app Install:
+**Дмитрий Никитин** *(GitHub: [Scottish-esquire](https://github.com/Scottish-esquire))* & **Соловьев Степан** *(GitHub: [fatmaann](https://github.com/fatmaann))*
+
+## Сслыка для установки:
 
 [Install apk](https://disk.yandex.ru/d/OfGgIQQxKc2zaw)
