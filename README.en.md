@@ -6,6 +6,6 @@ Is designed to help people learn foreign languages. This app serves as a compreh
 
 **Dmitrii Nikitin D.** *(GitHub: [Scottish-esquire](https://github.com/Scottish-esquire))* & **Stepan Solovev G.** *(GitHub: [fatmaann](https://github.com/fatmaann))*
 
-##### WORDBOOK app Install:
+## WORDBOOK app Install:
 
 [Install apk](https://disk.yandex.ru/d/OfGgIQQxKc2zaw)
